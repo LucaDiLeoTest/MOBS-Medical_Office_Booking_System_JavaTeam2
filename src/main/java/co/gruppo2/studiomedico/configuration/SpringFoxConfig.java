@@ -16,29 +16,22 @@ import java.util.Collections;
 public class SpringFoxConfig {
 
     @Bean
-    public Docket api() {
+    public Docket api(){
 
         ApiInfo apiInfo = new ApiInfo(
                 "[MOBS]Medical_Office_Booking_System",
                 "[MOBS]Medical_Office_Booking_System a booking back-end type software",
                 "1.0.0",
                 "https://en.wikipedia.org/wiki/MIT_License",
-                new Contact("Mobs", "https://mobsmanagment.co", "mobs@mobsmanagment.co"),
+                new Contact("Mobs","https://mobsmanagment.co","mobs@mobsmanagment.co"),
                 "MIT",
                 "https://en.wikipedia.org/wiki/MIT_License",
-                Collections.emptyList()
-        );
+                Collections.emptyList());
 
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("co.gruppo2.studiomedico"))
-                .paths(PathSelectors.any())
-                .build().apiInfo(apiInfo)
+        return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage(
+                        "co.gruppo2.studiomedico")).paths(PathSelectors.any()).build().apiInfo(apiInfo)
 
-                .tags(
-                        new Tag("insert_txt", "insert_txt")
-                )
-                ;
+                .tags(new Tag("insert_txt","insert_txt"));
     }
 
 }

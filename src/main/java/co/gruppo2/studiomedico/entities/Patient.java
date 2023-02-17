@@ -1,9 +1,11 @@
 package co.gruppo2.studiomedico.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "patients")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Patient {
 
     @Id
@@ -11,24 +13,24 @@ public class Patient {
     @Column(name = "id_patient")
     private Long patientId;
 
-    @Column(name = "name")
-    private String patientName;
-    @Column(name = "Surname")
-    private String patientSurname;
-    @Column(name = "email")
-    private String patientEmail;
-    @Column(name = "contact")
-    private String patientContact;
+    @Column(nullable = false)
+    private String name;
+    @Column(nullable = false)
+    private String surname;
+    @Column(unique = true)
+    private String email;
+    @Column(nullable = false)
+    private String contact;
 
     public Patient(){
     }
 
-    public Patient(Long patientId,String patientName,String patientSurname,String patientEmail,String patientContact){
+    public Patient(Long patientId,String name,String surname,String email,String contact){
         this.patientId = patientId;
-        this.patientName = patientName;
-        this.patientSurname = patientSurname;
-        this.patientEmail = patientEmail;
-        this.patientContact = patientContact;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.contact = contact;
     }
 
     public Long getPatientId(){
@@ -39,35 +41,35 @@ public class Patient {
         this.patientId = patientId;
     }
 
-    public String getPatientName(){
-        return patientName;
+    public String getName(){
+        return name;
     }
 
-    public void setPatientName(String patientName){
-        this.patientName = patientName;
+    public void setName(String name){
+        this.name = name;
     }
 
-    public String getPatientSurname(){
-        return patientSurname;
+    public String getSurname(){
+        return surname;
     }
 
-    public void setPatientSurname(String patientSurname){
-        this.patientSurname = patientSurname;
+    public void setSurname(String surname){
+        this.surname = surname;
     }
 
-    public String getPatientEmail(){
-        return patientEmail;
+    public String getEmail(){
+        return email;
     }
 
-    public void setPatientEmail(String patientEmail){
-        this.patientEmail = patientEmail;
+    public void setEmail(String email){
+        this.email = email;
     }
 
-    public String getPatientContact(){
-        return patientContact;
+    public String getContact(){
+        return contact;
     }
 
-    public void setPatientContact(String patientContact){
-        this.patientContact = patientContact;
+    public void setContact(String contact){
+        this.contact = contact;
     }
 }
