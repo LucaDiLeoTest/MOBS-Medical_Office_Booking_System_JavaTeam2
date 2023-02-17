@@ -1,9 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/newdb
+    url: jdbc:mysql://localhost:3306/antonio_prova
     username: root
-    password: focamonaca
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: password
   jpa:
     database: mysql
     show_sql: true

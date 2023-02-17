@@ -1,0 +1,9 @@
+co\gruppo2\studiomedico\entities\Patient.class
+co\gruppo2\studiomedico\entities\DoctorSpecialization.class
+co\gruppo2\studiomedico\entities\Doctor.class
+co\gruppo2\studiomedico\entities\Receptionist.class
+co\gruppo2\studiomedico\configuration\SpringFoxConfig.class
+co\gruppo2\studiomedico\repositories\MedicalOfficeRepository.class
+co\gruppo2\studiomedico\StudiomedicoApplication.class
+co\gruppo2\studiomedico\DTO\BookingDTO.class
+co\gruppo2\studiomedico\entities\Booking.class
