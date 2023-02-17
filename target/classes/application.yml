@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:8080/newdb
+    url: jdbc:mysql://localhost:8080/antonio_prova
     username: root
-    password: focamonaca
+    password: password
   jpa:
     database: mysql
     show_sql: true
