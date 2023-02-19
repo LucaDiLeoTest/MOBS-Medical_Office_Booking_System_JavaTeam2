@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9b54e6f-cff4-4c84-a9e4-e4ef9770af7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_17_02_2023_13_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_17_02_2023_13_05__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_02_2023_13_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_02_2023_13_04__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="receptionist_featuring" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,7 +80,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feat" />
+                        <option value="develop" />
                       </list>
                     </value>
                   </entry>
