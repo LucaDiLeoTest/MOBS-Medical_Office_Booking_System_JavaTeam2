@@ -19,10 +19,45 @@ public class ReceptionistService {
 
     @Autowired
     IBookingRepository bookingRepository;
-
+//------------------------------------------Receptionist Logic-------------------------------------------//
     public Receptionist createAndSaveReceptionist(Receptionist receptionist){
         return receptionistRepository.saveAndFlush(receptionist);
     }
+
+    public Optional<Receptionist> getReceptionistById(Long id){
+        return receptionistRepository.findById(id);
+    }
+    public List<Receptionist> getAllReceptionist(){
+        return receptionistRepository.findAll();
+    }
+
+    public Receptionist updateReceptionist(Long id, String name, String surname, String email,
+                                           String officeContact, String workPlace){
+        Receptionist receptionist;
+        if (receptionistRepository.existsById(id)){
+            receptionist = receptionistRepository.getReferenceById(id);
+            receptionist.setReceptionistName(name);
+            receptionist.setReceptionistSurname(surname);
+            receptionist.setReceptionistEmail(email);
+            receptionist.setReceptionistOfficeContact(officeContact);
+            receptionist.setReceptionistWorkplace(workPlace);
+            receptionist = receptionistRepository.save(receptionist);
+        } else {
+            receptionist = new Receptionist();
+        }
+        return receptionist;
+    }
+
+    public void deleteSecretaryById(Long id){
+        receptionistRepository.deleteById(id);
+
+    }
+    public void deleteAllSecretary(){
+        receptionistRepository.deleteAll();
+
+    }
+
+    //-----------------------------------Reservation logic----------------------------------------------//
 
     public void createAndSaveReservation(Booking booking) {
         bookingRepository.saveAndFlush(booking);
