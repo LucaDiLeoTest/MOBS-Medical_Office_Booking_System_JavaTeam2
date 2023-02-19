@@ -5,25 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9b54e6f-cff4-4c84-a9e4-e4ef9770af7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/PatientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/045a644c952eacdc65ab14c5d12979d5b4b0cc0f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/configuration/SpringFoxConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/configuration/SpringFoxConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/IPatientService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/PatientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_17_02_2023_13_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_17_02_2023_13_05__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_02_2023_13_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_02_2023_13_04__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/configuration/SpringFoxConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/configuration/SpringFoxConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/PatientController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Patient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/repositories/MedicalOfficeRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/IPatientService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/PatientServiceImpl.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
         <option value="com.haulmont.jpb.JpaRepository" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
