@@ -18,14 +18,13 @@ public class Booking {
     @Column(name = "booking_end_time")
     private LocalDateTime endingTime;
 
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Receptionist receptionist;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
 
     /**
