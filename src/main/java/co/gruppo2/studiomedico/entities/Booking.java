@@ -10,13 +10,14 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_booking")
-    private long id;
+    private Long id;
 
     @Column(name = "booking_start_time")
     private LocalDateTime startingTime;
 
     @Column(name = "booking_end_time")
     private LocalDateTime endingTime;
+
 
     @ManyToOne
     private Doctor doctor;
@@ -75,6 +76,7 @@ public class Booking {
     public void setEndingTime(LocalDateTime endingTime) {
         this.endingTime = endingTime;
     }
+
 
     public Doctor getDoctor() {
         return doctor;

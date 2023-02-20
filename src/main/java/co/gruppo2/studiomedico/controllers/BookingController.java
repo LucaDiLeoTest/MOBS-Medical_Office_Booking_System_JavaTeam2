@@ -15,14 +15,7 @@ public class BookingController {
         System.out.println("");
     }
 
-    @GetMapping("/bookinglist")
-    public List<Booking> getBookingList(){
-        return;}
 
-    @GetMapping("/{id}")
-    public Booking getBookingById(@PathVariable long Id){
-        return Booking ;
-    }
 
     @PutMapping("/{id}")
     public void editBooking(@PathVariable long id, @RequestBody Booking booking){
