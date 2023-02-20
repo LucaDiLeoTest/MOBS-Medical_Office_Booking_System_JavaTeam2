@@ -31,13 +31,11 @@ public class ReceptionistService {
         return receptionistRepository.findAll();
     }
 
-    public ReceptionistEntity updateReceptionist(Long id, String name, String surname, String email,
+    public ReceptionistEntity updateReceptionist(Long id,  String email,
                                                  String officeContact, String workPlace){
         ReceptionistEntity receptionist;
         if (receptionistRepository.existsById(id)){
             receptionist = receptionistRepository.getReferenceById(id);
-            receptionist.setReceptionistName(name);
-            receptionist.setReceptionistSurname(surname);
             receptionist.setReceptionistEmail(email);
             receptionist.setReceptionistOfficeContact(officeContact);
             receptionist.setReceptionistWorkplace(workPlace);

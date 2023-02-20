@@ -34,11 +34,12 @@ public class ReceptionistController {
         return receptionistService.getReceptionistById(id);
     }
 
-    @PutMapping("/update_secretary")
-    public ReceptionistEntity updateSecretary(@RequestParam Long id, @RequestParam String name, @RequestParam String surname,
-                                              @RequestParam String email, @RequestParam String officeContact,
+    @PutMapping("/update_secretary/{id}")
+    public ReceptionistEntity updateSecretary(@PathVariable Long id,
+                                              @RequestParam String email,
+                                              @RequestParam String officeContact,
                                               @RequestParam String workPlace){
-        return receptionistService.updateReceptionist(id, name, surname, email, officeContact, workPlace);
+        return receptionistService.updateReceptionist(id, email, officeContact, workPlace);
     }
 
     @DeleteMapping("/delete_secretary/{id}")
