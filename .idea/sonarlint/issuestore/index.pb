@@ -1,12 +1,6 @@
 
 k
 ;src/main/java/co/gruppo2/studiomedico/entities/Booking.java,7\0\709aeb9561f1cad6eb3471a36a30cfc9f3473c8d
-j
-:src/main/java/co/gruppo2/studiomedico/entities/Doctor.java,3\9\393583bff90fa9a9b21431bcde0b5bfd037850eb
-x
-Hsrc/main/java/co/gruppo2/studiomedico/entities/DoctorSpecialization.java,e\1\e1e9bf44ad7732a745ae3504fb787de4ad57cdf8
-p
-@src/main/java/co/gruppo2/studiomedico/entities/Receptionist.java,b\d\bd9dca89cf5e6f2bc31e93090b6a2e92608a8073
 8
 mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
 7
@@ -19,7 +13,3 @@ z
 Jsrc/main/java/co/gruppo2/studiomedico/repositories/IPatientRepository.java,b\0\b040ff421b9e416e89a04087552b71d9c02bfbbc
 r
 Bsrc/main/java/co/gruppo2/studiomedico/StudiomedicoApplication.java,1\4\14a4cbfb56b5e10c1c8da69548924758644c24f2
-x
-Hsrc/main/java/co/gruppo2/studiomedico/controllers/PatientController.java,d\9\d9d48e6047079628740cab9466ea60fcca497979
-k
-;src/main/java/co/gruppo2/studiomedico/entities/Patient.java,1\1\11697b42625098bbb61183ef6dfd0816c6a71a36

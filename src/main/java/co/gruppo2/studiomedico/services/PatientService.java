@@ -45,8 +45,9 @@ public class PatientService{
         return patient;
     }
 
-    public void deletePatientById(Long id){
+    public String deletePatientById(Long id){
         patientRepository.deleteById(id);
+        return "The patient "+id+" has been eliminated";
     }
 
     public String deleteAllPatient(){
