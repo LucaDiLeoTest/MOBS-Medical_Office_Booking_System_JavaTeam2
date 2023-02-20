@@ -18,20 +18,45 @@ public class Booking {
     @Column(name = "booking_end_time")
     private LocalDateTime endingTime;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Doctor doctor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Receptionist receptionist;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Patient patient;
+
+    /**
+     * No args constructor.
+     */
     public Booking() {
     }
 
-    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime) {
+    /**
+     * All args constructor.
+     * @param id
+     * @param startingTime
+     * @param endingTime
+     * @param doctor
+     * @param receptionist
+     * @param patient
+     */
+    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime, Doctor doctor, Receptionist receptionist, Patient patient) {
         this.id = id;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
+        this.doctor = doctor;
+        this.receptionist = receptionist;
+        this.patient = patient;
     }
 
-    public Long getId() {
+    // << SETTER AND GETTER >>
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -49,5 +74,30 @@ public class Booking {
 
     public void setEndingTime(LocalDateTime endingTime) {
         this.endingTime = endingTime;
+    }
+
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Receptionist getReceptionist() {
+        return receptionist;
+    }
+
+    public void setReceptionist(Receptionist receptionist) {
+        this.receptionist = receptionist;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }
