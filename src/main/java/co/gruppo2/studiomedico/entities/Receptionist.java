@@ -8,7 +8,7 @@ public class Receptionist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int receptionistId;
+    private Long receptionistId;
 
     @Column(name = "name")
     private String receptionistName;
@@ -24,7 +24,7 @@ public class Receptionist {
     public Receptionist() {
     }
 
-    public Receptionist(int receptionistId, String receptionistName, String receptionistSurname, String receptionistEmail, String receptionistOfficeContact, String receptionistWorkplace) {
+    public Receptionist(Long receptionistId, String receptionistName, String receptionistSurname, String receptionistEmail, String receptionistOfficeContact, String receptionistWorkplace) {
         this.receptionistId = receptionistId;
         this.receptionistName = receptionistName;
         this.receptionistSurname = receptionistSurname;
@@ -36,11 +36,11 @@ public class Receptionist {
     //Getters and Setters
 
 
-    public int getReceptionistId() {
+    public Long getReceptionistId() {
         return receptionistId;
     }
 
-    public void setReceptionistId(int receptionistId) {
+    public void setReceptionistId(Long receptionistId) {
         this.receptionistId = receptionistId;
     }
 
