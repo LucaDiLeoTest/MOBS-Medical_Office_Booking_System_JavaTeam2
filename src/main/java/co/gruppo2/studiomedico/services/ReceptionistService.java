@@ -1,7 +1,7 @@
 package co.gruppo2.studiomedico.services;
 
 import co.gruppo2.studiomedico.entities.Booking;
-import co.gruppo2.studiomedico.entities.Receptionist;
+import co.gruppo2.studiomedico.entities.ReceptionistEntity;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +20,20 @@ public class ReceptionistService {
     @Autowired
     IBookingRepository bookingRepository;
 //------------------------------------------Receptionist Logic-------------------------------------------//
-    public Receptionist createAndSaveReceptionist(Receptionist receptionist){
+    public ReceptionistEntity createAndSaveReceptionist(ReceptionistEntity receptionist){
         return receptionistRepository.saveAndFlush(receptionist);
     }
 
-    public Optional<Receptionist> getReceptionistById(Long id){
+    public Optional<ReceptionistEntity> getReceptionistById(Long id){
         return receptionistRepository.findById(id);
     }
-    public List<Receptionist> getAllReceptionist(){
+    public List<ReceptionistEntity> getAllReceptionist(){
         return receptionistRepository.findAll();
     }
 
-    public Receptionist updateReceptionist(Long id, String name, String surname, String email,
-                                           String officeContact, String workPlace){
-        Receptionist receptionist;
+    public ReceptionistEntity updateReceptionist(Long id, String name, String surname, String email,
+                                                 String officeContact, String workPlace){
+        ReceptionistEntity receptionist;
         if (receptionistRepository.existsById(id)){
             receptionist = receptionistRepository.getReferenceById(id);
             receptionist.setReceptionistName(name);
@@ -43,7 +43,7 @@ public class ReceptionistService {
             receptionist.setReceptionistWorkplace(workPlace);
             receptionist = receptionistRepository.save(receptionist);
         } else {
-            receptionist = new Receptionist();
+            receptionist = new ReceptionistEntity();
         }
         return receptionist;
     }

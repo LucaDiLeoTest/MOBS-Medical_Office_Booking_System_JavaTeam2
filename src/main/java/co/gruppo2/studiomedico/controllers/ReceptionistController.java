@@ -1,7 +1,7 @@
 package co.gruppo2.studiomedico.controllers;
 
 import co.gruppo2.studiomedico.entities.Booking;
-import co.gruppo2.studiomedico.entities.Receptionist;
+import co.gruppo2.studiomedico.entities.ReceptionistEntity;
 import co.gruppo2.studiomedico.services.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,25 +19,25 @@ public class ReceptionistController {
 
     //---------------------------------------------CRUD SECRETARY-------------------------------------------------//
     @PostMapping("/add_secretary")
-    public Receptionist createReceptionist(@RequestBody Receptionist receptionist){
+    public ReceptionistEntity createReceptionist(@RequestBody ReceptionistEntity receptionist){
         receptionistService.createAndSaveReceptionist(receptionist);
         return receptionist;
     }
 
     @GetMapping("/all_secretaries")
-    public List<Receptionist> getAllSecretaries(){
+    public List<ReceptionistEntity> getAllSecretaries(){
         return receptionistService.getAllReceptionist();
     }
 
     @GetMapping("/find_secretary/{id}")
-    public Optional<Receptionist> findSecretaryById(@PathVariable Long id){
+    public Optional<ReceptionistEntity> findSecretaryById(@PathVariable Long id){
         return receptionistService.getReceptionistById(id);
     }
 
     @PutMapping("/update_secretary")
-    public Receptionist updateSecretary(@RequestParam Long id, @RequestParam String name,  @RequestParam String surname,
-                                        @RequestParam String email,  @RequestParam String officeContact,
-                                        @RequestParam String workPlace){
+    public ReceptionistEntity updateSecretary(@RequestParam Long id, @RequestParam String name, @RequestParam String surname,
+                                              @RequestParam String email, @RequestParam String officeContact,
+                                              @RequestParam String workPlace){
         return receptionistService.updateReceptionist(id, name, surname, email, officeContact, workPlace);
     }
 

@@ -3,28 +3,28 @@ package co.gruppo2.studiomedico.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "receptionists")
-public class Receptionist {
+@Table(name = "receptionist")
+public class ReceptionistEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long receptionistId;
 
-    @Column(name = "name")
+    @Column(name = "receptionist_name")
     private String receptionistName;
-    @Column(name = "surname")
+    @Column(name = "receptionist_surname")
     private String receptionistSurname;
-    @Column(name = "email")
+    @Column(name = "receptionist_email")
     private String receptionistEmail;
-    @Column(name = "office_contact")
+    @Column(name = "receptionist_office_contact")
     private String receptionistOfficeContact;
-    @Column(name = "workplace")
+    @Column(name = "receptionist_workplace")
     private String receptionistWorkplace;
 
-    public Receptionist() {
+    public ReceptionistEntity() {
     }
 
-    public Receptionist(Long receptionistId, String receptionistName, String receptionistSurname, String receptionistEmail, String receptionistOfficeContact, String receptionistWorkplace) {
+    public ReceptionistEntity(Long receptionistId, String receptionistName, String receptionistSurname, String receptionistEmail, String receptionistOfficeContact, String receptionistWorkplace) {
         this.receptionistId = receptionistId;
         this.receptionistName = receptionistName;
         this.receptionistSurname = receptionistSurname;

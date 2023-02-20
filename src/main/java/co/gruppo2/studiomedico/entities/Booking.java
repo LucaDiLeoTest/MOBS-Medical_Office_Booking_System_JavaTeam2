@@ -22,7 +22,7 @@ public class Booking {
     private Doctor doctor;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Receptionist receptionist;
+    private ReceptionistEntity receptionist;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
@@ -42,7 +42,7 @@ public class Booking {
      * @param receptionist
      * @param patient
      */
-    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime, Doctor doctor, Receptionist receptionist, Patient patient) {
+    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime, Doctor doctor, ReceptionistEntity receptionist, Patient patient) {
         this.id = id;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
@@ -85,11 +85,11 @@ public class Booking {
         this.doctor = doctor;
     }
 
-    public Receptionist getReceptionist() {
+    public ReceptionistEntity getReceptionist() {
         return receptionist;
     }
 
-    public void setReceptionist(Receptionist receptionist) {
+    public void setReceptionist(ReceptionistEntity receptionist) {
         this.receptionist = receptionist;
     }
 

@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9b54e6f-cff4-4c84-a9e4-e4ef9770af7e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_17_02_2023_13_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_17_02_2023_13_05__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_02_2023_13_04__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_02_2023_13_04__Changes_.xml" afterDir="false" />
-<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Receptionist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/ReceptionistEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/repositories/IReceptionistRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/repositories/IReceptionistRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" afterDir="false" />
->>>>>>> 2e02db45b3fb650ceed66209b5f8ee8cd557a43f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
