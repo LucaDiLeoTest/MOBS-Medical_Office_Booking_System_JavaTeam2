@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9b54e6f-cff4-4c84-a9e4-e4ef9770af7e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/PersonEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/ReceptionistEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/ReceptionistEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/ReceptionistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/ReceptionistController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/ReceptionistEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/ReceptionistEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/ReceptionistService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/ReceptionistService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/enumerations/EnumReservation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +18,7 @@
         <option value="com.haulmont.jpb.JpaRepository" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -50,15 +44,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nicol/OneDrive/Desktop/MOBS-Medical_Office_Booking_System_JavaTeam2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicol/OneDrive/Desktop/MOBS-Medical_Office_Booking_System_JavaTeam2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="co.gruppo2.studiomedico.configuration" />
