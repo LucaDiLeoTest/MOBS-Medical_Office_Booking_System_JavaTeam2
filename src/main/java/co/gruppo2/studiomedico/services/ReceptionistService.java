@@ -19,6 +19,8 @@ public class ReceptionistService {
 
     @Autowired
     IBookingRepository bookingRepository;
+
+
 //------------------------------------------Receptionist Logic-------------------------------------------//
     public ReceptionistEntity createAndSaveReceptionist(ReceptionistEntity receptionist){
         return receptionistRepository.saveAndFlush(receptionist);
@@ -31,15 +33,14 @@ public class ReceptionistService {
         return receptionistRepository.findAll();
     }
 
-    public ReceptionistEntity updateReceptionist(Long id,  String email,
-                                                 String officeContact, String workPlace){
+    public ReceptionistEntity saveOrUpdate(Long id,  String email, String contact, String workPlace){
         ReceptionistEntity receptionist;
-        if (receptionistRepository.existsById(id)){
-            receptionist = receptionistRepository.getReferenceById(id);
-            receptionist.setReceptionistEmail(email);
-            receptionist.setReceptionistOfficeContact(officeContact);
+        if(receptionistRepository.existsById(id)){
+            receptionist = receptionistRepository.getById(id);
+            receptionist.setEmail(email);
+            receptionist.setReceptionistOfficeContact(contact);
             receptionist.setReceptionistWorkplace(workPlace);
-            receptionist = receptionistRepository.save(receptionist);
+            return  receptionistRepository.save(receptionist);
         } else {
             receptionist = new ReceptionistEntity();
         }
