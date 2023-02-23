@@ -6,7 +6,6 @@ import co.gruppo2.studiomedico.enumerations.StatusReservation;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -97,31 +96,51 @@ public class ReceptionistService {
         return booking;
     }
 
-    public Booking updateStatusReservation(Long id, StatusReservation statusReservation) {
-        Booking booking ;
-        if (bookingRepository.existsById(id)) {
-            booking = bookingRepository.getById(id);
-            booking.setStatusReservation(StatusReservation.CANCELLED);
-        } else {
-            booking = new Booking();
+
+//-------Logical delete if status reservation == .CANCELLED--------//
+
+    /**
+     *
+     * LOGICAL DELETE WORK IN PROGRESS... *
+     */
+
+    public List<Booking> logicalDelete() {
+       List<Booking> reservations = bookingRepository.findAll();
+
+       for (Booking booking: reservations) {
+            if (booking.getStatusReservation() != null && booking.getStatusReservation() == StatusReservation.EXPIRED){
+                bookingRepository.delete(booking);
+            }
         }
-        booking = bookingRepository.save(booking);
-        return booking;
+            return reservations;
     }
 
+    //-----Logical set status if ending time of reservation is before of now--------//
 
-    public ResponseEntity<Booking> logicalDelete(Long id) throws Exception {
-        Optional<Booking> reservations = bookingRepository.findById(id);
-        Booking booking = reservations.get();
+    /**
+     *
+     */
 
-        if (booking.getStatusReservation() == StatusReservation.CANCELLED) {
-            bookingRepository.deleteById(id);
-            return ResponseEntity.ok().build();
-        } else {
-            throw new Exception("Bad request");
-
+    public List<Booking> logicalSetStatus(){
+        LocalDateTime now = LocalDateTime.now();
+        List<Booking> bookings = bookingRepository.findAll();
+        for (Booking booking : bookings) {
+            if (booking.getEndingTime() != null && booking.getEndingTime().isBefore(now)) {
+                booking.setStatusReservation(StatusReservation.EXPIRED);
+            }
         }
+        return bookingRepository.saveAll(bookings);
     }
-
 
 }
+
+
+
+
+
+
+
+
+
+
+
