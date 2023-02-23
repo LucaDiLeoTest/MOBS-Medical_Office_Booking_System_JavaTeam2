@@ -2,10 +2,13 @@ package co.gruppo2.studiomedico.controllers;
 
 import co.gruppo2.studiomedico.entities.Booking;
 import co.gruppo2.studiomedico.entities.ReceptionistEntity;
+import co.gruppo2.studiomedico.enumerations.StatusReservation;
 import co.gruppo2.studiomedico.services.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -73,9 +76,15 @@ public class ReceptionistController {
         return receptionistService.getReservationById(id);
     }
 
-    @PutMapping("/update")
-    public Booking updateReservation(@RequestParam Long id, LocalDateTime startingTime, LocalDateTime endingTime){
+    @PutMapping("/update/{id}")
+    public Booking updateReservation(@PathVariable Long id, LocalDateTime startingTime, LocalDateTime endingTime){
         return receptionistService.updateReservation(id, startingTime, endingTime);
+    }
+
+    @PutMapping("/update_status/{id}")
+    public Booking updateStatusReservation(@PathVariable Long id, @RequestParam StatusReservation statusReservation){
+        return receptionistService.updateStatusReservation(id, statusReservation);
+
     }
 
     @DeleteMapping("/delete_reservation/{id}")
@@ -88,5 +97,18 @@ public class ReceptionistController {
     public String deleteAllReservations(){
         receptionistService.deleteAllReservations();
         return "All reservations has been deleted!";
+    }
+
+    //-----------------WORK IN PROGRESS--------------------------//
+
+    /**LOGICAL DELETE WORK IN PROGRESS...*/
+
+    @DeleteMapping("/logical_deleted/{id}")
+    public ResponseEntity<Booking> logicalDelet(@PathVariable Long id){
+        try {
+            return receptionistService.logicalDelete(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

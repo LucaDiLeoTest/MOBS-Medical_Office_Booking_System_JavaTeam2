@@ -1,7 +1,8 @@
 package co.gruppo2.studiomedico.enumerations;
 
-public enum EnumReservation {
+public enum StatusReservation {
     PENDING,
     CONFIRMED,
+    MODIFIED,
     CANCELLED;
 }

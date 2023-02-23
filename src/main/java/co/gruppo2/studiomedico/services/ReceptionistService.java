@@ -2,9 +2,11 @@ package co.gruppo2.studiomedico.services;
 
 import co.gruppo2.studiomedico.entities.Booking;
 import co.gruppo2.studiomedico.entities.ReceptionistEntity;
+import co.gruppo2.studiomedico.enumerations.StatusReservation;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -59,6 +61,8 @@ public class ReceptionistService {
     //-----------------------------------Reservation logic----------------------------------------------//
 
     public void createAndSaveReservation(Booking booking) {
+
+        booking.setStatusReservation(StatusReservation.CONFIRMED);
         bookingRepository.saveAndFlush(booking);
     }
 
@@ -84,11 +88,39 @@ public class ReceptionistService {
             booking = bookingRepository.getById(id);
             booking.setStartingTime(startTime);
             booking.setEndingTime(endTime);
-            booking = bookingRepository.save(booking);
+        } else {
+
+            booking = new Booking();
+        }
+        booking.setStatusReservation(StatusReservation.MODIFIED);
+        booking = bookingRepository.save(booking);
+        return booking;
+    }
+
+    public Booking updateStatusReservation(Long id, StatusReservation statusReservation) {
+        Booking booking ;
+        if (bookingRepository.existsById(id)) {
+            booking = bookingRepository.getById(id);
+            booking.setStatusReservation(StatusReservation.CANCELLED);
         } else {
             booking = new Booking();
         }
+        booking = bookingRepository.save(booking);
         return booking;
+    }
+
+
+    public ResponseEntity<Booking> logicalDelete(Long id) throws Exception {
+        Optional<Booking> reservations = bookingRepository.findById(id);
+        Booking booking = reservations.get();
+
+        if (booking.getStatusReservation() == StatusReservation.CANCELLED) {
+            bookingRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            throw new Exception("Bad request");
+
+        }
     }
 
 
