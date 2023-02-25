@@ -1,48 +1,45 @@
 package co.gruppo2.studiomedico.controllers;
 
-import co.gruppo2.studiomedico.entities.Patient;
+import co.gruppo2.studiomedico.DTO.PatientDTO;
 import co.gruppo2.studiomedico.services.PatientService;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/patient")
+@RequestMapping("/patients")
 public class PatientController{
     @Autowired
-    PatientService patientService;
+    private PatientService patientService;
+
 
     @PostMapping("/add")
-    public Patient createPatient(@RequestBody Patient patient){
-        patientService.createAndSavePatient(patient);
-        return patient;
+    public ResponseEntity<PatientDTO> savePatient(@Valid @RequestBody  PatientDTO patientDTO){
+        PatientDTO savedPatient = patientService.savePatient(patientDTO);
+        return new ResponseEntity<>(savedPatient,HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
-    public List<Patient> getPatients(){
-        return patientService.getAllPatient();
+    @GetMapping("/email/{email}")
+    public ResponseEntity<PatientDTO> findPatientByEmail(@PathVariable String email){
+        PatientDTO patientDTO = patientService.findPatientByEmail(email);
+        return ResponseEntity.ok(patientDTO);
     }
 
-    @GetMapping("/{id}")
-    public Patient getSinglePatient(@PathVariable Long id){
-        return patientService.findPatientById(id);
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<PatientDTO> findPatientById(@PathVariable Long id){
+        PatientDTO patientDTO = patientService.findPatientById(id);
+        return ResponseEntity.ok(patientDTO);
     }
 
-    @PutMapping("/update")
-    public Patient updatePatient(@RequestParam Long id,@RequestParam String name,@RequestParam String surname,
-                                 @RequestParam String email,@RequestParam String contact){
-        return patientService.saveOrUpdate(id,name,surname,email,contact);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public String deletePatient(@PathVariable Long id){
-        patientService.deletePatientById(id);
-        return "The patient has been deleted!";
-    }
-    @DeleteMapping("delete/all")
-    public String deleteAll(){
-       return patientService.deleteAllPatient();
+    @GetMapping("/name-surname")
+    public ResponseEntity<List<PatientDTO>> findPatientsByNameSurname(
+            @RequestParam String name,@RequestParam String surname){
+        List<PatientDTO> patientsDTO = patientService.findPatientsByNameSurname(name,surname);
+        return ResponseEntity.ok(patientsDTO);
     }
 }
