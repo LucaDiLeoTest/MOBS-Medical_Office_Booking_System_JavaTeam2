@@ -1,7 +1,8 @@
 package co.gruppo2.studiomedico.services;
 
 import co.gruppo2.studiomedico.entities.Booking;
-import co.gruppo2.studiomedico.entities.Receptionist;
+import co.gruppo2.studiomedico.entities.ReceptionistEntity;
+import co.gruppo2.studiomedico.enumerations.StatusReservation;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +20,30 @@ public class ReceptionistService {
 
     @Autowired
     IBookingRepository bookingRepository;
+
+
 //------------------------------------------Receptionist Logic-------------------------------------------//
-    public Receptionist createAndSaveReceptionist(Receptionist receptionist){
+    public ReceptionistEntity createAndSaveReceptionist(ReceptionistEntity receptionist){
         return receptionistRepository.saveAndFlush(receptionist);
     }
 
-    public Optional<Receptionist> getReceptionistById(Long id){
+    public Optional<ReceptionistEntity> getReceptionistById(Long id){
         return receptionistRepository.findById(id);
     }
-    public List<Receptionist> getAllReceptionist(){
+    public List<ReceptionistEntity> getAllReceptionist(){
         return receptionistRepository.findAll();
     }
 
-    public Receptionist updateReceptionist(Long id, String name, String surname, String email,
-                                           String officeContact, String workPlace){
-        Receptionist receptionist;
-        if (receptionistRepository.existsById(id)){
-            receptionist = receptionistRepository.getReferenceById(id);
-            receptionist.setReceptionistName(name);
-            receptionist.setReceptionistSurname(surname);
-            receptionist.setReceptionistEmail(email);
-            receptionist.setReceptionistOfficeContact(officeContact);
+    public ReceptionistEntity saveOrUpdate(Long id,  String email, String contact, String workPlace){
+        ReceptionistEntity receptionist;
+        if(receptionistRepository.existsById(id)){
+            receptionist = receptionistRepository.getById(id);
+            receptionist.setEmail(email);
+            receptionist.setReceptionistOfficeContact(contact);
             receptionist.setReceptionistWorkplace(workPlace);
-            receptionist = receptionistRepository.save(receptionist);
+            return  receptionistRepository.save(receptionist);
         } else {
-            receptionist = new Receptionist();
+            receptionist = new ReceptionistEntity();
         }
         return receptionist;
     }
@@ -60,6 +60,8 @@ public class ReceptionistService {
     //-----------------------------------Reservation logic----------------------------------------------//
 
     public void createAndSaveReservation(Booking booking) {
+
+        booking.setStatusReservation(StatusReservation.CONFIRMED);
         bookingRepository.saveAndFlush(booking);
     }
 
@@ -85,12 +87,60 @@ public class ReceptionistService {
             booking = bookingRepository.getById(id);
             booking.setStartingTime(startTime);
             booking.setEndingTime(endTime);
-            booking = bookingRepository.save(booking);
         } else {
+
             booking = new Booking();
         }
+        booking.setStatusReservation(StatusReservation.MODIFIED);
+        booking = bookingRepository.save(booking);
         return booking;
     }
 
 
+//-------Logical delete if status reservation == .CANCELLED--------//
+
+    /**
+     *
+     * LOGICAL DELETE WORK IN PROGRESS... *
+     */
+
+    public List<Booking> logicalDelete() {
+       List<Booking> reservations = bookingRepository.findAll();
+
+       for (Booking booking: reservations) {
+            if (booking.getStatusReservation() != null && booking.getStatusReservation() == StatusReservation.EXPIRED){
+                bookingRepository.delete(booking);
+            }
+        }
+            return reservations;
+    }
+
+    //-----Logical set status if ending time of reservation is before of now--------//
+
+    /**
+     *
+     */
+
+    public List<Booking> logicalSetStatus(){
+        LocalDateTime now = LocalDateTime.now();
+        List<Booking> bookings = bookingRepository.findAll();
+        for (Booking booking : bookings) {
+            if (booking.getEndingTime() != null && booking.getEndingTime().isBefore(now)) {
+                booking.setStatusReservation(StatusReservation.EXPIRED);
+            }
+        }
+        return bookingRepository.saveAll(bookings);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 package co.gruppo2.studiomedico.entities;
 
+import co.gruppo2.studiomedico.enumerations.StatusReservation;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -18,11 +19,14 @@ public class Booking {
     @Column(name = "booking_end_time")
     private LocalDateTime endingTime;
 
+    @Column(name = "status_reservation")
+    private StatusReservation statusReservation;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctor;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Receptionist receptionist;
+    private ReceptionistEntity receptionist;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
@@ -42,10 +46,11 @@ public class Booking {
      * @param receptionist
      * @param patient
      */
-    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime, Doctor doctor, Receptionist receptionist, Patient patient) {
+    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime, StatusReservation statusReservation, Doctor doctor, ReceptionistEntity receptionist, Patient patient) {
         this.id = id;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
+        this.statusReservation = statusReservation;
         this.doctor = doctor;
         this.receptionist = receptionist;
         this.patient = patient;
@@ -75,8 +80,8 @@ public class Booking {
     public void setEndingTime(LocalDateTime endingTime) {
         this.endingTime = endingTime;
     }
-
-
+    public StatusReservation getStatusReservation(){return statusReservation;}
+    public void setStatusReservation(StatusReservation statusReservation){this.statusReservation = statusReservation;}
     public Doctor getDoctor() {
         return doctor;
     }
@@ -85,11 +90,11 @@ public class Booking {
         this.doctor = doctor;
     }
 
-    public Receptionist getReceptionist() {
+    public ReceptionistEntity getReceptionist() {
         return receptionist;
     }
 
-    public void setReceptionist(Receptionist receptionist) {
+    public void setReceptionist(ReceptionistEntity receptionist) {
         this.receptionist = receptionist;
     }
 
