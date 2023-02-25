@@ -20,6 +20,7 @@ public class Booking {
     private LocalDateTime endingTime;
 
     @Column(name = "status_reservation")
+    @Enumerated(EnumType.STRING)
     private StatusReservation statusReservation;
 
     @ManyToOne(fetch = FetchType.LAZY)

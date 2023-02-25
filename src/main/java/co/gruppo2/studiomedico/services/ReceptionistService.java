@@ -1,5 +1,6 @@
 package co.gruppo2.studiomedico.services;
 
+import co.gruppo2.studiomedico.DTO.ReceptionistDTO;
 import co.gruppo2.studiomedico.entities.Booking;
 import co.gruppo2.studiomedico.entities.ReceptionistEntity;
 import co.gruppo2.studiomedico.enumerations.StatusReservation;
@@ -23,8 +24,16 @@ public class ReceptionistService {
 
 
 //------------------------------------------Receptionist Logic-------------------------------------------//
-    public ReceptionistEntity createAndSaveReceptionist(ReceptionistEntity receptionist){
-        return receptionistRepository.saveAndFlush(receptionist);
+    public ReceptionistDTO createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
+        ReceptionistEntity receptionist = new ReceptionistEntity();
+        receptionist.setName(receptionistDTO.getName());
+        receptionist.setSurname(receptionistDTO.getSurname());
+        receptionist.setEmail(receptionistDTO.getEmail());
+        receptionist.setReceptionistOfficeContact(receptionistDTO.getOfficeContactReceptionist());
+        receptionist.setReceptionistWorkPlace(receptionistDTO.getReceptionistWorkPlace());
+        receptionistRepository.save(receptionist);
+        return new ReceptionistDTO(receptionist.getId(), receptionist.getName(), receptionist.getSurname(),
+                receptionist.getEmail(), receptionist.getReceptionistOfficeContact(), receptionist.getReceptionistWorkPlace());
     }
 
     public Optional<ReceptionistEntity> getReceptionistById(Long id){
@@ -40,7 +49,7 @@ public class ReceptionistService {
             receptionist = receptionistRepository.getById(id);
             receptionist.setEmail(email);
             receptionist.setReceptionistOfficeContact(contact);
-            receptionist.setReceptionistWorkplace(workPlace);
+            receptionist.setReceptionistWorkPlace(workPlace);
             return  receptionistRepository.save(receptionist);
         } else {
             receptionist = new ReceptionistEntity();
@@ -65,8 +74,13 @@ public class ReceptionistService {
         bookingRepository.saveAndFlush(booking);
     }
 
-    public void deleteReservationById(Long id){
-        bookingRepository.deleteById(id);
+    public void deleteReservationById(Long id) throws Exception {
+
+        if (bookingRepository.existsById(id)){
+            bookingRepository.deleteById(id);
+        } else {
+            throw new Exception("Reservation not found!");
+        }
     }
 
     public void deleteAllReservations(){
@@ -77,9 +91,15 @@ public class ReceptionistService {
         return bookingRepository.findAll();
     }
 
-    public Optional<Booking> getReservationById(Long id){
-        return bookingRepository.findById(id);
+    public Optional<Booking> getReservationById(Long id) throws Exception {
+       if (bookingRepository.existsById(id)){
+           return bookingRepository.findById(id);
+       } else {
+           throw new Exception("Reservation not found");
+       }
+
     }
+
 
     public Booking updateReservation(Long id, LocalDateTime startTime, LocalDateTime endTime){
         Booking booking;
@@ -96,13 +116,7 @@ public class ReceptionistService {
         return booking;
     }
 
-
-//-------Logical delete if status reservation == .CANCELLED--------//
-
-    /**
-     *
-     * LOGICAL DELETE WORK IN PROGRESS... *
-     */
+    //-----LOGICAL DELETE AND LOGICAL SET STATUS-------//
 
     public List<Booking> logicalDelete() {
        List<Booking> reservations = bookingRepository.findAll();
@@ -114,12 +128,6 @@ public class ReceptionistService {
         }
             return reservations;
     }
-
-    //-----Logical set status if ending time of reservation is before of now--------//
-
-    /**
-     *
-     */
 
     public List<Booking> logicalSetStatus(){
         LocalDateTime now = LocalDateTime.now();
