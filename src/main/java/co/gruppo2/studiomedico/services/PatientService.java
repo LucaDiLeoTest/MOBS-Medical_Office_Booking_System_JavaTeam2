@@ -1,7 +1,6 @@
 package co.gruppo2.studiomedico.services;
 
 import co.gruppo2.studiomedico.entities.Patient;
-import co.gruppo2.studiomedico.entities.PatientRepository;
 import co.gruppo2.studiomedico.repositories.IPatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +11,6 @@ import java.util.List;
 public class PatientService{
     @Autowired
     IPatientRepository iPatientRepository;
-    @Autowired
-    private PatientRepository patientRepository;
-
 
     public Patient createAndSavePatient(Patient patient){
         return iPatientRepository.save(patient);
@@ -46,7 +42,7 @@ public class PatientService{
     }
 
     public String deletePatientById(Long id){
-        patientRepository.deleteById(id);
+        iPatientRepository.deleteById(id);
         return "The patient "+id+" has been eliminated";
     }
 
