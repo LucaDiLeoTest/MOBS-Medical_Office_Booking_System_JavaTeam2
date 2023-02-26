@@ -14,10 +14,10 @@ public class Booking {
     private Long id;
 
     @Column(name = "booking_start_time")
-    private LocalDateTime startingTime;
+    private LocalDateTime startingTime = LocalDateTime.now();
 
     @Column(name = "booking_end_time")
-    private LocalDateTime endingTime;
+    private LocalDateTime endingTime = startingTime.plusMinutes(30);
 
     @Column(name = "status_reservation")
     @Enumerated(EnumType.STRING)
@@ -25,9 +25,6 @@ public class Booking {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctor;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ReceptionistEntity receptionist;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
@@ -40,20 +37,16 @@ public class Booking {
 
     /**
      * All args constructor.
-     * @param id
      * @param startingTime
      * @param endingTime
      * @param doctor
-     * @param receptionist
      * @param patient
      */
-    public Booking(long id, LocalDateTime startingTime, LocalDateTime endingTime, StatusReservation statusReservation, Doctor doctor, ReceptionistEntity receptionist, Patient patient) {
-        this.id = id;
+    public Booking(LocalDateTime startingTime, LocalDateTime endingTime, StatusReservation statusReservation, Doctor doctor, ReceptionistEntity receptionist, Patient patient) {
         this.startingTime = startingTime;
         this.endingTime = endingTime;
         this.statusReservation = statusReservation;
         this.doctor = doctor;
-        this.receptionist = receptionist;
         this.patient = patient;
     }
 
@@ -89,14 +82,6 @@ public class Booking {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-
-    public ReceptionistEntity getReceptionist() {
-        return receptionist;
-    }
-
-    public void setReceptionist(ReceptionistEntity receptionist) {
-        this.receptionist = receptionist;
     }
 
     public Patient getPatient() {

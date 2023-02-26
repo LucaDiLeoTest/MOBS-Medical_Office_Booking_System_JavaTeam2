@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/DTO/ReceptionistDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_12_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_12_14__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/ReceptionistController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/ReceptionistEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/ReceptionistEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/ReceptionistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/ReceptionistController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Patient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/ReceptionistService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/ReceptionistService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/nicol/OneDrive/Desktop/MOBS-Medical_Office_Booking_System_JavaTeam2",
+    "last_opened_file_path": "C:/Users/LUCA/OneDrive/Desktop/Work/Develhope/MEDICAL OFFICE BOOKING SYSTEM/MOBS-Medical_Office_Booking_System_JavaTeam2",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
@@ -70,6 +63,26 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="co.gruppo2.studiomedico.configuration" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="StudiomedicoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.gruppo2.studiomedico.StudiomedicoApplication" />
+      <module name="MOBS-Medical_Office_Booking_System_JavaTeam2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.gruppo2.studiomedico.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StudiomedicoApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
