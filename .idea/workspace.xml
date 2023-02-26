@@ -5,13 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_12_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_02_2023_12_14__Changes_.xml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393583bff90fa9a9b21431bcde0b5bfd037850eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d91a2c673f340d99ab9c1348571eb55e5461a25" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/709aeb9561f1cad6eb3471a36a30cfc9f3473c8d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7e789b0280a8e39804fa86569e9087630bb43948" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/d/bd9dca89cf5e6f2bc31e93090b6a2e92608a8073" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/1/e1e9bf44ad7732a745ae3504fb787de4ad57cdf8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/DTO/BookingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/DTO/BookingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/DTO/PatientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/DTO/PatientDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/controllers/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/PersonEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/entities/PersonEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/studiomedico/services/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/controllers/PatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/entities/Patient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/studiomedico/services/PatientService.class" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +36,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="com.haulmont.jpb.JpaRepository" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -50,15 +64,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/LUCA/OneDrive/Desktop/Work/Develhope/MEDICAL OFFICE BOOKING SYSTEM/MOBS-Medical_Office_Booking_System_JavaTeam2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nicol/OneDrive/Desktop/studioMedico/MOBS-Medical_Office_Booking_System_JavaTeam2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="co.gruppo2.studiomedico.configuration" />
