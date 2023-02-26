@@ -9,7 +9,7 @@ public class ReceptionistEntity extends PersonEntity{
     @Column(name = "receptionist_office_contact")
     private String receptionistOfficeContact;
     @Column(name = "receptionist_workplace")
-    private String receptionistWorkplace;
+    private String receptionistWorkPlace;
 
     public ReceptionistEntity() {
     }
@@ -17,7 +17,7 @@ public class ReceptionistEntity extends PersonEntity{
     public ReceptionistEntity(Long id, String name, String surname, String email, String receptionistOfficeContact, String receptionistWorkplace) {
         super(id, name, surname, email);
         this.receptionistOfficeContact = receptionistOfficeContact;
-        this.receptionistWorkplace = receptionistWorkplace;
+        this.receptionistWorkPlace = receptionistWorkplace;
     }
 
     //Getters and Setters
@@ -30,11 +30,11 @@ public class ReceptionistEntity extends PersonEntity{
         this.receptionistOfficeContact = receptionistOfficeContact;
     }
 
-    public String getReceptionistWorkplace() {
-        return receptionistWorkplace;
+    public String getReceptionistWorkPlace() {
+        return receptionistWorkPlace;
     }
 
-    public void setReceptionistWorkplace(String receptionistWorkplace) {
-        this.receptionistWorkplace = receptionistWorkplace;
+    public void setReceptionistWorkPlace(String receptionistWorkPlace) {
+        this.receptionistWorkPlace = receptionistWorkPlace;
     }
 }
