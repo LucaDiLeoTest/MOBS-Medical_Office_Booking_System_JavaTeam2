@@ -14,9 +14,6 @@ public class PatientDTO{
     @Pattern(regexp = "\\d{10}", message = "The number contains max 10 numbers")
     private String telephoneNumber;
 
-    public PatientDTO(){
-    }
-
     public PatientDTO(Long id,String name,String surname,String email,String telephoneNumber){
         this.id = id;
         this.name = name;

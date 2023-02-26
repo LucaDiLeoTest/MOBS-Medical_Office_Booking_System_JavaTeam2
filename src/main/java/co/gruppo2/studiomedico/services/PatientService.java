@@ -3,6 +3,7 @@ package co.gruppo2.studiomedico.services;
 import co.gruppo2.studiomedico.DTO.PatientDTO;
 import co.gruppo2.studiomedico.entities.Patient;
 import co.gruppo2.studiomedico.repositories.IPatientRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class PatientService{
     IPatientRepository patientRepository;
 
 
-    public PatientDTO savePatient(PatientDTO patientDTO){
+    public PatientDTO createPatient(@NotNull PatientDTO patientDTO){
         Patient patient = new Patient();
         patient.setName(patientDTO.getName());
         patient.setSurname(patientDTO.getSurname());
