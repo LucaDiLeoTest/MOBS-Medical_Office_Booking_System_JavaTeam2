@@ -1,6 +1,6 @@
 package co.gruppo2.studiomedico.entities;
 
-import co.gruppo2.studiomedico.enumerations.StatusReservation;
+import co.gruppo2.studiomedico.enumerations.BookingStatusEnum;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -14,14 +14,14 @@ public class Booking {
     private Long id;
 
     @Column(name = "booking_start_time")
-    private LocalDateTime startingTime = LocalDateTime.now();
+    private LocalDateTime startingTime;
 
     @Column(name = "booking_end_time")
-    private LocalDateTime endingTime = startingTime.plusMinutes(30);
+    private LocalDateTime endingTime;
 
-    @Column(name = "status_reservation")
     @Enumerated(EnumType.STRING)
-    private StatusReservation statusReservation;
+    @Column(name = "booking_status")
+    private BookingStatusEnum bookingStatusEnum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctor;
@@ -30,32 +30,33 @@ public class Booking {
     private Patient patient;
 
     /**
-     * No args constructor.
+     * No args constructor
      */
     public Booking() {
     }
 
     /**
-     * All args constructor.
+     * All args constructor
      * @param startingTime
      * @param endingTime
+     * @param bookingStatusEnum
      * @param doctor
      * @param patient
      */
-    public Booking(LocalDateTime startingTime, LocalDateTime endingTime, StatusReservation statusReservation, Doctor doctor, ReceptionistEntity receptionist, Patient patient) {
+    public Booking(LocalDateTime startingTime, LocalDateTime endingTime, BookingStatusEnum bookingStatusEnum, Doctor doctor, Patient patient) {
         this.startingTime = startingTime;
         this.endingTime = endingTime;
-        this.statusReservation = statusReservation;
+        this.bookingStatusEnum = bookingStatusEnum;
         this.doctor = doctor;
         this.patient = patient;
     }
 
-    // << SETTER AND GETTER >>
-    public long getId() {
+    //getter and setter
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,17 +66,21 @@ public class Booking {
 
     public void setStartingTime(LocalDateTime startingTime) {
         this.startingTime = startingTime;
+        this.endingTime = startingTime.plusMinutes(30);                 //set the endingTime with a delay of 30 min
     }
 
     public LocalDateTime getEndingTime() {
         return endingTime;
     }
 
-    public void setEndingTime(LocalDateTime endingTime) {
-        this.endingTime = endingTime;
+    public BookingStatusEnum getBookingStatusEnum() {
+        return bookingStatusEnum;
     }
-    public StatusReservation getStatusReservation(){return statusReservation;}
-    public void setStatusReservation(StatusReservation statusReservation){this.statusReservation = statusReservation;}
+
+    public void setBookingStatusEnum(BookingStatusEnum bookingStatusEnum) {
+        this.bookingStatusEnum = bookingStatusEnum;
+    }
+
     public Doctor getDoctor() {
         return doctor;
     }

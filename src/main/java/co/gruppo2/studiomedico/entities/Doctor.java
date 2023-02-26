@@ -1,5 +1,6 @@
 package co.gruppo2.studiomedico.entities;
 
+import co.gruppo2.studiomedico.enumerations.DoctorSpecialization;
 import jakarta.persistence.*;
 
 @Entity

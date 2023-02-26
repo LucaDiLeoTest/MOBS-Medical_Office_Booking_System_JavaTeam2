@@ -1,8 +1,9 @@
 package co.gruppo2.studiomedico.enumerations;
 
-public enum StatusReservation {
+public enum BookingStatusEnum {
     PENDING,
     CONFIRMED,
     MODIFIED,
+    DELETED,
     EXPIRED;
 }
