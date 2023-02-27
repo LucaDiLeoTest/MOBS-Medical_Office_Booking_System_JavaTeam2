@@ -1,9 +1,12 @@
 package co.gruppo2.studiomedico.controllers;
 
+import co.gruppo2.studiomedico.DTO.ReceptionistDTO;
 import co.gruppo2.studiomedico.entities.Booking;
-import co.gruppo2.studiomedico.entities.Receptionist;
+import co.gruppo2.studiomedico.entities.ReceptionistEntity;
 import co.gruppo2.studiomedico.services.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -19,28 +22,26 @@ public class ReceptionistController {
 
     //---------------------------------------------CRUD SECRETARY-------------------------------------------------//
     @PostMapping("/add_secretary")
-    public Receptionist createReceptionist(@RequestBody Receptionist receptionist){
-        receptionistService.createAndSaveReceptionist(receptionist);
-        return receptionist;
+    public ResponseEntity<ReceptionistDTO> createReceptionist(@RequestBody ReceptionistDTO receptionist){
+        ReceptionistDTO receptionistDTO = receptionistService.createAndSaveReceptionist(receptionist);
+        return new ResponseEntity<>(receptionistDTO, HttpStatus.CREATED);
     }
 
     @GetMapping("/all_secretaries")
-    public List<Receptionist> getAllSecretaries(){
+    public List<ReceptionistEntity> getAllSecretaries(){
         return receptionistService.getAllReceptionist();
     }
 
     @GetMapping("/find_secretary/{id}")
-    public Optional<Receptionist> findSecretaryById(@PathVariable Long id){
+    public Optional<ReceptionistEntity> findSecretaryById(@PathVariable Long id){
         return receptionistService.getReceptionistById(id);
     }
+    @PutMapping("/update_secretary/{id}")
+  public ReceptionistEntity updateSecretary(@PathVariable Long id,  @RequestParam String email,
+                                            @RequestParam String receptionistOfficeContact, String workPlace ){
+        return receptionistService.saveOrUpdate(id,email,receptionistOfficeContact, workPlace);
 
-    @PutMapping("/update_secretary")
-    public Receptionist updateSecretary(@RequestParam Long id, @RequestParam String name,  @RequestParam String surname,
-                                        @RequestParam String email,  @RequestParam String officeContact,
-                                        @RequestParam String workPlace){
-        return receptionistService.updateReceptionist(id, name, surname, email, officeContact, workPlace);
     }
-
     @DeleteMapping("/delete_secretary/{id}")
     public String deleteSecretary(@PathVariable Long id){
         receptionistService.deleteSecretaryById(id);
@@ -61,26 +62,35 @@ public class ReceptionistController {
         receptionistService.createAndSaveReservation(booking);
         return booking;
     }
-
     @GetMapping("/all_reservations")
     public List<Booking> getReservations(){
         return receptionistService.getAllReservations();
     }
 
     @GetMapping("/find_reservation/{id}")
-    public Optional<Booking> findReservationById(@PathVariable Long id){
-        return receptionistService.getReservationById(id);
-    }
+    public Optional<Booking> findReservationById(@PathVariable Long id) {
 
-    @PutMapping("/update")
-    public Booking updateReservation(@RequestParam Long id, LocalDateTime startingTime, LocalDateTime endingTime){
+        try {
+            return receptionistService.getReservationById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    @PutMapping("/update/{id}")
+    public Booking updateReservation(@PathVariable Long id, LocalDateTime startingTime, LocalDateTime endingTime){
         return receptionistService.updateReservation(id, startingTime, endingTime);
     }
 
     @DeleteMapping("/delete_reservation/{id}")
     public String deleteReservation(@PathVariable Long id){
-        receptionistService.deleteReservationById(id);
-        return "The reservation has been deleted!";
+        try {
+            receptionistService.deleteReservationById(id);
+            return "The reservation has been deleted!";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @DeleteMapping("/delete_all_reservations")
@@ -88,4 +98,17 @@ public class ReceptionistController {
         receptionistService.deleteAllReservations();
         return "All reservations has been deleted!";
     }
+
+    //-------------LOGICAL MAPPING RESERVATION-------------//
+    @PutMapping("/logical_change_status")
+    public List<Booking> logicalChange(){
+      return receptionistService.logicalSetStatus();
+    }
+    @DeleteMapping("/logical_deleted")
+    public List<Booking> logicalDelete(){
+        return receptionistService.logicalDelete();
+    }
+
+
+
 }

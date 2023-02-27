@@ -1,7 +1,9 @@
 package co.gruppo2.studiomedico.services;
 
+import co.gruppo2.studiomedico.DTO.ReceptionistDTO;
 import co.gruppo2.studiomedico.entities.Booking;
-import co.gruppo2.studiomedico.entities.Receptionist;
+import co.gruppo2.studiomedico.entities.ReceptionistEntity;
+import co.gruppo2.studiomedico.enumerations.BookingStatusEnum;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +21,38 @@ public class ReceptionistService {
 
     @Autowired
     IBookingRepository bookingRepository;
+
+
 //------------------------------------------Receptionist Logic-------------------------------------------//
-    public Receptionist createAndSaveReceptionist(Receptionist receptionist){
-        return receptionistRepository.saveAndFlush(receptionist);
+    public ReceptionistDTO createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
+        ReceptionistEntity receptionist = new ReceptionistEntity();
+        receptionist.setName(receptionistDTO.getName());
+        receptionist.setSurname(receptionistDTO.getSurname());
+        receptionist.setEmail(receptionistDTO.getEmail());
+        receptionist.setReceptionistOfficeContact(receptionistDTO.getOfficeContactReceptionist());
+        receptionist.setReceptionistWorkPlace(receptionistDTO.getReceptionistWorkPlace());
+        receptionistRepository.save(receptionist);
+        return new ReceptionistDTO(receptionist.getId(), receptionist.getName(), receptionist.getSurname(),
+                receptionist.getEmail(), receptionist.getReceptionistOfficeContact(), receptionist.getReceptionistWorkPlace());
     }
 
-    public Optional<Receptionist> getReceptionistById(Long id){
+    public Optional<ReceptionistEntity> getReceptionistById(Long id){
         return receptionistRepository.findById(id);
     }
-    public List<Receptionist> getAllReceptionist(){
+    public List<ReceptionistEntity> getAllReceptionist(){
         return receptionistRepository.findAll();
     }
 
-    public Receptionist updateReceptionist(Long id, String name, String surname, String email,
-                                           String officeContact, String workPlace){
-        Receptionist receptionist;
-        if (receptionistRepository.existsById(id)){
-            receptionist = receptionistRepository.getReferenceById(id);
-            receptionist.setReceptionistName(name);
-            receptionist.setReceptionistSurname(surname);
-            receptionist.setReceptionistEmail(email);
-            receptionist.setReceptionistOfficeContact(officeContact);
-            receptionist.setReceptionistWorkplace(workPlace);
-            receptionist = receptionistRepository.save(receptionist);
+    public ReceptionistEntity saveOrUpdate(Long id,  String email, String contact, String workPlace){
+        ReceptionistEntity receptionist;
+        if(receptionistRepository.existsById(id)){
+            receptionist = receptionistRepository.getById(id);
+            receptionist.setEmail(email);
+            receptionist.setReceptionistOfficeContact(contact);
+            receptionist.setReceptionistWorkPlace(workPlace);
+            return  receptionistRepository.save(receptionist);
         } else {
-            receptionist = new Receptionist();
+            receptionist = new ReceptionistEntity();
         }
         return receptionist;
     }
@@ -60,11 +69,18 @@ public class ReceptionistService {
     //-----------------------------------Reservation logic----------------------------------------------//
 
     public void createAndSaveReservation(Booking booking) {
+
+        booking.setBookingStatusEnum(BookingStatusEnum.CONFIRMED);
         bookingRepository.saveAndFlush(booking);
     }
 
-    public void deleteReservationById(Long id){
-        bookingRepository.deleteById(id);
+    public void deleteReservationById(Long id) throws Exception {
+
+        if (bookingRepository.existsById(id)){
+            bookingRepository.deleteById(id);
+        } else {
+            throw new Exception("Reservation not found!");
+        }
     }
 
     public void deleteAllReservations(){
@@ -75,22 +91,64 @@ public class ReceptionistService {
         return bookingRepository.findAll();
     }
 
-    public Optional<Booking> getReservationById(Long id){
-        return bookingRepository.findById(id);
+    public Optional<Booking> getReservationById(Long id) throws Exception {
+       if (bookingRepository.existsById(id)){
+           return bookingRepository.findById(id);
+       } else {
+           throw new Exception("Reservation not found");
+       }
+
     }
+
 
     public Booking updateReservation(Long id, LocalDateTime startTime, LocalDateTime endTime){
         Booking booking;
         if (bookingRepository.existsById(id)){
             booking = bookingRepository.getById(id);
             booking.setStartingTime(startTime);
-            booking.setEndingTime(endTime);
-            booking = bookingRepository.save(booking);
+        //  booking.setEndingTime(endTime);
         } else {
+
             booking = new Booking();
         }
+        booking.setBookingStatusEnum(BookingStatusEnum.MODIFIED);
+        booking = bookingRepository.save(booking);
         return booking;
     }
 
+    //-----LOGICAL DELETE AND LOGICAL SET STATUS-------//
+
+    public List<Booking> logicalDelete() {
+       List<Booking> reservations = bookingRepository.findAll();
+
+       for (Booking booking: reservations) {
+            if (booking.getBookingStatusEnum() != null && booking.getBookingStatusEnum() == BookingStatusEnum.EXPIRED){
+                bookingRepository.delete(booking);
+            }
+        }
+            return reservations;
+    }
+
+    public List<Booking> logicalSetStatus(){
+        LocalDateTime now = LocalDateTime.now();
+        List<Booking> bookings = bookingRepository.findAll();
+        for (Booking booking : bookings) {
+            if (booking.getEndingTime() != null && booking.getEndingTime().isBefore(now)) {
+                booking.setBookingStatusEnum(BookingStatusEnum.EXPIRED);
+            }
+        }
+        return bookingRepository.saveAll(bookings);
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+

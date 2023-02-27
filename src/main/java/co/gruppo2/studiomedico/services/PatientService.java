@@ -1,57 +1,63 @@
 package co.gruppo2.studiomedico.services;
 
+import co.gruppo2.studiomedico.DTO.PatientDTO;
 import co.gruppo2.studiomedico.entities.Patient;
-import co.gruppo2.studiomedico.entities.PatientRepository;
 import co.gruppo2.studiomedico.repositories.IPatientRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientService{
     @Autowired
-    IPatientRepository iPatientRepository;
-    @Autowired
-    private PatientRepository patientRepository;
+    IPatientRepository patientRepository;
 
 
-    public Patient createAndSavePatient(Patient patient){
-        return iPatientRepository.save(patient);
+    public PatientDTO createPatient(@NotNull PatientDTO patientDTO){
+        Patient patient = new Patient();
+        patient.setName(patientDTO.getName());
+        patient.setSurname(patientDTO.getSurname());
+        patient.setEmail(patientDTO.getEmail());
+        patient.setTelephoneNumber(patientDTO.getTelephoneNumber());
+        patient = patientRepository.save(patient);
+        return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+                patient.getTelephoneNumber());
     }
 
-
-    public List<Patient> getAllPatient(){
-        return iPatientRepository.findAll();
-    }
-
-
-    public Patient findPatientById(Long id){
-        return iPatientRepository.existsById(id) ? iPatientRepository.getById(id) : new Patient();
-    }
-
-    public Patient saveOrUpdate(Long id,String name,String surname,String email,String contact){
-        Patient patient;
-        if(iPatientRepository.existsById(id)){
-            patient = iPatientRepository.getById(id);
-            patient.setName(name);
-            patient.setSurname(surname);
-            patient.setEmail(email);
-            patient.setContact(contact);
-            patient = iPatientRepository.save(patient);
+    public PatientDTO findPatientByEmail(String email){
+        Optional<Patient> patientOptional = patientRepository.findByEmail(email);
+        if(!patientOptional.isPresent()){
+            throw new NullPointerException("Patient not found with email: "+email);
         } else {
-            patient = new Patient();
+            Patient patient = patientOptional.get();
+            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+                    patient.getTelephoneNumber());
         }
-        return patient;
     }
 
-    public String deletePatientById(Long id){
-        patientRepository.deleteById(id);
-        return "The patient "+id+" has been eliminated";
+
+    public PatientDTO findPatientById(Long id){
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+        if(!patientOptional.isPresent()){
+            throw new NullPointerException("Patient not found with id: "+id);
+        } else {
+            Patient patient = patientOptional.get();
+            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+                    patient.getTelephoneNumber());
+        }
     }
 
-    public String deleteAllPatient(){
-        iPatientRepository.deleteAll();
-        return "All the patients have been deleted!";
+    public List<PatientDTO> findPatientsByNameSurname(String name,String surname){
+        List<Patient> patients = patientRepository.findByNameAndSurname(name,surname);
+        List<PatientDTO> patientsDTO = new ArrayList<>();
+        for(Patient patient : patients){
+            patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+                    patient.getTelephoneNumber()));
+        }
+        return patientsDTO;
     }
 }

@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/studio_medico_
+    url: jdbc:mysql://localhost:3306/newdb
     username: root
-    password: Milanista1997
+    password: focamonaca
   jpa:
     database: mysql
     show_sql: true
