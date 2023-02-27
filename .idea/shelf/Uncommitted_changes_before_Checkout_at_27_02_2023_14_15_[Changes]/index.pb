@@ -17,5 +17,9 @@ z
 Jsrc/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java,4\9\49396401571f6c31d5a2fc30f51dd78d05755c70
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+i
+9src/main/java/co/gruppo2/studiomedico/DTO/BookingDTO.java,3\d\3d91a2c673f340d99ab9c1348571eb55e5461a25
 x
-Hsrc/main/java/co/gruppo2/studiomedico/entities/DoctorSpecialization.java,e\1\e1e9bf44ad7732a745ae3504fb787de4ad57cdf8
+Hsrc/main/java/co/gruppo2/studiomedico/controllers/BookingController.java,3\a\3abb29bf84c26b27473481a4802211035599e5ee
+i
+9src/main/java/co/gruppo2/studiomedico/DTO/PatientDTO.java,0\d\0d5ae58a3804c9999a4663be262cf6f8f08116ed
