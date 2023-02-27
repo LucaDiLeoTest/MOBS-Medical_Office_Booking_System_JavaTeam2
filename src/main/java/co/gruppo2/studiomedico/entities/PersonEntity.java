@@ -1,38 +1,32 @@
 package co.gruppo2.studiomedico.entities;
 
+import co.gruppo2.studiomedico.enumerations.PersonStatusEnum;
 import jakarta.persistence.*;
 
 @MappedSuperclass
-public class PersonEntity {
+public abstract class PersonEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String surname;
     @Column(unique = true,nullable = false)
     private String email;
+    @Enumerated
+    private PersonStatusEnum personStatusEnum;
 
 
     public PersonEntity() {
     }
 
-    public PersonEntity(Long id, String name, String surname, String email) {
-        this.id = id;
+    public PersonEntity(String name, String surname, String email) {
         this.name = name;
         this.surname = surname;
         this.email = email;
+        personStatusEnum = PersonStatusEnum.ACTIVE;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -56,6 +50,14 @@ public class PersonEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public PersonStatusEnum getPersonStatusEnum(){
+        return personStatusEnum;
+    }
+
+    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum){
+        this.personStatusEnum = personStatusEnum;
     }
 }
 

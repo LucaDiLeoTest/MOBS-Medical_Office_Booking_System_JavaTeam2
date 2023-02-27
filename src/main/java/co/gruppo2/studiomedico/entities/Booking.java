@@ -43,7 +43,8 @@ public class Booking {
      * @param doctor
      * @param patient
      */
-    public Booking(LocalDateTime startingTime, LocalDateTime endingTime, BookingStatusEnum bookingStatusEnum, Doctor doctor, Patient patient) {
+    public Booking(LocalDateTime startingTime,LocalDateTime endingTime,BookingStatusEnum bookingStatusEnum,
+                   Doctor doctor,Patient patient){
         this.startingTime = startingTime;
         this.endingTime = endingTime;
         this.bookingStatusEnum = bookingStatusEnum;

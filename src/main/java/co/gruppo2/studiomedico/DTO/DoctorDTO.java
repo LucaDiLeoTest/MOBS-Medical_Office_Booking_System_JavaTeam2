@@ -1,7 +1,6 @@
 package co.gruppo2.studiomedico.DTO;
 
-
-public class PatientDTO{
+public class DoctorDTO{
     private Long id;
 
     private String name;
@@ -12,7 +11,10 @@ public class PatientDTO{
 
     private String telephoneNumber;
 
-    public PatientDTO(Long id,String name,String surname,String email,String telephoneNumber){
+    public DoctorDTO(){
+    }
+
+    public DoctorDTO(Long id,String name,String surname,String email,String telephoneNumber){
         this.id = id;
         this.name = name;
         this.surname = surname;

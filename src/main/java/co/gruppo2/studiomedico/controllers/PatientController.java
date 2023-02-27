@@ -18,13 +18,13 @@ public class PatientController{
 
 
     @PostMapping("/add")
-    public ResponseEntity<PatientDTO> savePatient(@Valid @RequestBody  PatientDTO patientDTO){
+    public ResponseEntity<PatientDTO> createPatientDTO(@Valid @RequestBody  PatientDTO patientDTO){
         PatientDTO savedPatient = patientService.createPatient(patientDTO);
         return new ResponseEntity<>(savedPatient,HttpStatus.CREATED);
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<PatientDTO> findPatientByEmail(@PathVariable String email){
+    public ResponseEntity<PatientDTO> findPatientByEmail(@PathVariable String email) throws Exception{
         PatientDTO patientDTO = patientService.findPatientByEmail(email);
         return ResponseEntity.ok(patientDTO);
     }
@@ -41,5 +41,10 @@ public class PatientController{
             @RequestParam String name,@RequestParam String surname){
         List<PatientDTO> patientsDTO = patientService.findPatientsByNameSurname(name,surname);
         return ResponseEntity.ok(patientsDTO);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
+        patientService.logicalDeletePatientById(id);
+        return ResponseEntity.noContent().build();
     }
 }
