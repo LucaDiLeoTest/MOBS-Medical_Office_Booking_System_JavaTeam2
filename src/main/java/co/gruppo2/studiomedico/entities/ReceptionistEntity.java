@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "receptionist")
 public class ReceptionistEntity extends PersonEntity{
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_receptionist")
+    private Long id;
     @Column(name = "receptionist_office_contact")
     private String receptionistOfficeContact;
     @Column(name = "receptionist_workplace")
@@ -14,10 +17,19 @@ public class ReceptionistEntity extends PersonEntity{
     public ReceptionistEntity() {
     }
 
-    public ReceptionistEntity(Long id, String name, String surname, String email, String receptionistOfficeContact, String receptionistWorkplace) {
-        super(id, name, surname, email);
+    public ReceptionistEntity(String name,String surname,String email,String receptionistOfficeContact,
+                              String receptionistWorkplace){
+        super(name,surname,email);
         this.receptionistOfficeContact = receptionistOfficeContact;
         this.receptionistWorkPlace = receptionistWorkplace;
+    }
+
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
     }
 
     //Getters and Setters

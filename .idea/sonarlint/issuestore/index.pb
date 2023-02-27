@@ -15,13 +15,7 @@ v
 Fsrc/main/java/co/gruppo2/studiomedico/entities/ReceptionistEntity.java,c\f\cfe3aa2d739cca8fdba5d16d0d141a8209f34af6
 z
 Jsrc/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java,4\9\49396401571f6c31d5a2fc30f51dd78d05755c70
-p
-@src/main/java/co/gruppo2/studiomedico/entities/PersonEntity.java,1\b\1b982e0144b5211cf5f029b744e0447c33619e76
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-j
-:src/main/java/co/gruppo2/studiomedico/entities/Doctor.java,3\9\393583bff90fa9a9b21431bcde0b5bfd037850eb
 x
 Hsrc/main/java/co/gruppo2/studiomedico/entities/DoctorSpecialization.java,e\1\e1e9bf44ad7732a745ae3504fb787de4ad57cdf8
-w
-Gsrc/main/java/co/gruppo2/studiomedico/services/ReceptionistService.java,7\e\7e789b0280a8e39804fa86569e9087630bb43948

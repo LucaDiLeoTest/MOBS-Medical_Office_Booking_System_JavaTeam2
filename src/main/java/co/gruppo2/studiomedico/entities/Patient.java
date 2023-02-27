@@ -8,7 +8,10 @@ import jakarta.persistence.*;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Patient extends PersonEntity{
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_patient")
+    private Long id;
     @Column(unique = true, nullable = false)
     private String telephoneNumber;
 
@@ -16,9 +19,18 @@ public class Patient extends PersonEntity{
     public Patient(){
     }
 
-    public Patient(Long id,String name,String surname,String email,String telephoneNumber){
-        super(id,name,surname,email);
+    public Patient(String name,String surname,String email,Long id,String telephoneNumber){
+        super(name,surname,email);
+        this.id = id;
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public Long getId(){
+        return id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
     }
 
     public String getTelephoneNumber(){

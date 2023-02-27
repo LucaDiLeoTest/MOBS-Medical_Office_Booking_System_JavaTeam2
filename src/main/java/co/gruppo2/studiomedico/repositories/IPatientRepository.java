@@ -14,4 +14,5 @@ public interface IPatientRepository extends JpaRepository<Patient,Long>{
     Optional<Patient> findById(Long is);
 
     List<Patient> findByNameAndSurname(String name,String surname);
+    void logicalDelete(Long id);
 }

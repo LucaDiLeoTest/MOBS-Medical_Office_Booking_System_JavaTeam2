@@ -1,6 +1,5 @@
 package co.gruppo2.studiomedico.DTO;
 
-import jakarta.validation.constraints.Pattern;
 
 public class PatientDTO{
     private Long id;
@@ -11,7 +10,6 @@ public class PatientDTO{
 
     private String email;
 
-    @Pattern(regexp = "\\d{10}", message = "The number contains max 10 numbers")
     private String telephoneNumber;
 
     public PatientDTO(Long id,String name,String surname,String email,String telephoneNumber){
