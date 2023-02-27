@@ -3,7 +3,7 @@ package co.gruppo2.studiomedico.services;
 import co.gruppo2.studiomedico.DTO.ReceptionistDTO;
 import co.gruppo2.studiomedico.entities.Booking;
 import co.gruppo2.studiomedico.entities.ReceptionistEntity;
-import co.gruppo2.studiomedico.enumerations.StatusReservation;
+import co.gruppo2.studiomedico.enumerations.BookingStatusEnum;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +70,7 @@ public class ReceptionistService {
 
     public void createAndSaveReservation(Booking booking) {
 
-        booking.setStatusReservation(StatusReservation.CONFIRMED);
+        booking.setBookingStatusEnum(BookingStatusEnum.CONFIRMED);
         bookingRepository.saveAndFlush(booking);
     }
 
@@ -106,12 +106,12 @@ public class ReceptionistService {
         if (bookingRepository.existsById(id)){
             booking = bookingRepository.getById(id);
             booking.setStartingTime(startTime);
-            booking.setEndingTime(endTime);
+        //  booking.setEndingTime(endTime);
         } else {
 
             booking = new Booking();
         }
-        booking.setStatusReservation(StatusReservation.MODIFIED);
+        booking.setBookingStatusEnum(BookingStatusEnum.MODIFIED);
         booking = bookingRepository.save(booking);
         return booking;
     }
@@ -122,7 +122,7 @@ public class ReceptionistService {
        List<Booking> reservations = bookingRepository.findAll();
 
        for (Booking booking: reservations) {
-            if (booking.getStatusReservation() != null && booking.getStatusReservation() == StatusReservation.EXPIRED){
+            if (booking.getBookingStatusEnum() != null && booking.getBookingStatusEnum() == BookingStatusEnum.EXPIRED){
                 bookingRepository.delete(booking);
             }
         }
@@ -134,7 +134,7 @@ public class ReceptionistService {
         List<Booking> bookings = bookingRepository.findAll();
         for (Booking booking : bookings) {
             if (booking.getEndingTime() != null && booking.getEndingTime().isBefore(now)) {
-                booking.setStatusReservation(StatusReservation.EXPIRED);
+                booking.setBookingStatusEnum(BookingStatusEnum.EXPIRED);
             }
         }
         return bookingRepository.saveAll(bookings);
