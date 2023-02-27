@@ -1,7 +1,9 @@
 package co.gruppo2.studiomedico.services;
 
 import co.gruppo2.studiomedico.entities.Booking;
+import co.gruppo2.studiomedico.enumerations.BookingStatusEnum;
 import co.gruppo2.studiomedico.repositories.IBookingRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,33 +20,17 @@ public class BookingService {
      * @param booking
      * @return
      */
-    public Booking createBooking (Booking booking){
-
+    public Booking createBooking(Booking booking) {
         return iBookingRepository.save(booking);
     }
-
-    /*public Booking editBooking(Booking booking){
-
-        if(iBookingRepository.existsById(booking.getId())){
-            booking = iBookingRepository.getById(booking.getId());      WORK IN PROGRESS...
-            LocalDateTime updateStartingTime;
-            booking.setStartingTime();
-
-
-        }else{
-            booking = new Booking();
-        }
-        return booking;
-    }*/
-
-
     /**
      * This method return the required booking found using its unique id_booking
      * @param id (unique param) use for identifies the required booking
      * @return  the required booking
      */
-    public Booking findBookingById(long id){
-        return iBookingRepository.existsById(id) ? iBookingRepository.getById(id) : new Booking();
+    public Booking getBookingById(Long id) {
+        return iBookingRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Booking with id " + id + " not found"));
     }
 
     /**
@@ -56,14 +42,30 @@ public class BookingService {
     }
 
 
+    /**
+     * This method consent to update an existing booking
+     * @param id
+     * @param booking
+     * @return
+     */
+    public Booking updateBooking(Long id, Booking booking) {
+        Booking existingBooking = getBookingById(id);
+        existingBooking.setStartingTime(booking.getStartingTime());
+        existingBooking.setBookingStatusEnum(booking.getBookingStatusEnum());
+        existingBooking.setDoctor(booking.getDoctor());
+        existingBooking.setPatient(booking.getPatient());
+        return iBookingRepository.save(existingBooking);
+    }
 
     /**
-     * This method delete a booking using its id
+     * This method logical delete a booking using its id and setting it's status on DELETED
      * @param id
      */
-    public void deleteBooking(long id){
-        iBookingRepository.deleteById(id);
-        System.out.println("The booking " + id + " has been deleted! " );
+    public void logicalDeleteBooking(long id){
+        Booking logicalDeleteBooking = getBookingById(id);
+        logicalDeleteBooking.setBookingStatusEnum(BookingStatusEnum.DELETED);
+        iBookingRepository.save(logicalDeleteBooking);
+        System.out.println("The booking " + id + " has been deleted!");
     }
 
 

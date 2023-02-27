@@ -1,6 +1,6 @@
 package co.gruppo2.studiomedico.DTO;
 
-import co.gruppo2.studiomedico.enumerations.StatusReservation;
+import co.gruppo2.studiomedico.enumerations.BookingStatusEnum;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +9,7 @@ public class BookingDTO {
     private Long id;
     private LocalDateTime startingTime;
     private LocalDateTime endingTime;
-    private StatusReservation statusReservation;
+    private BookingStatusEnum bookingStatusEnum;
     private Long doctorId;
     private String doctorName;
     private String doctorSurname;
@@ -21,13 +21,13 @@ public class BookingDTO {
     public BookingDTO(){
     }
 
-    public BookingDTO(Long id,LocalDateTime startingTime,LocalDateTime endingTime,StatusReservation statusReservation
-            ,Long doctorId,String doctorName,String doctorSurname,Long receptionistId,String receptionistOfficeContact
-            ,String receptionistWorkplace,Long patientId){
+    public BookingDTO(Long id, LocalDateTime startingTime, LocalDateTime endingTime, BookingStatusEnum bookingStatusEnum
+            , Long doctorId, String doctorName, String doctorSurname, Long receptionistId, String receptionistOfficeContact
+            , String receptionistWorkplace, Long patientId){
         this.id = id;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
-        this.statusReservation = statusReservation;
+        this.bookingStatusEnum = bookingStatusEnum;
         this.doctorId = doctorId;
         this.doctorName = doctorName;
         this.doctorSurname = doctorSurname;
@@ -61,12 +61,12 @@ public class BookingDTO {
         this.endingTime = endingTime;
     }
 
-    public StatusReservation getStatusReservation(){
-        return statusReservation;
+    public BookingStatusEnum getStatusReservation(){
+        return bookingStatusEnum;
     }
 
-    public void setStatusReservation(StatusReservation statusReservation){
-        this.statusReservation = statusReservation;
+    public void setStatusReservation(BookingStatusEnum bookingStatusEnum){
+        this.bookingStatusEnum = bookingStatusEnum;
     }
 
     public Long getDoctorId(){
