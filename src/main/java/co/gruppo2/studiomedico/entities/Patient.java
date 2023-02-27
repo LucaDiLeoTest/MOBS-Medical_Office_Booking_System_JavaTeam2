@@ -2,7 +2,6 @@ package co.gruppo2.studiomedico.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 
 @Entity
 @Table(name = "patients")
