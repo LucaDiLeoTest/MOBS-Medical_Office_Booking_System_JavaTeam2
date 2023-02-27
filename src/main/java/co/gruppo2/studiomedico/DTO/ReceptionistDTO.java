@@ -10,20 +10,16 @@ public class ReceptionistDTO {
 
     private String email;
 
-    private String officeContactReceptionist;
 
-    private String receptionistWorkPlace;
 
     public ReceptionistDTO() {
     }
 
-    public ReceptionistDTO(Long id, String name, String surname, String email, String officeContactReceptionist, String workPlace) {
+    public ReceptionistDTO(Long id,String name,String surname,String email){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.officeContactReceptionist = officeContactReceptionist;
-        this.receptionistWorkPlace = workPlace;
     }
 
     public Long getId() {
@@ -58,19 +54,4 @@ public class ReceptionistDTO {
         this.email = email;
     }
 
-    public String getOfficeContactReceptionist() {
-        return officeContactReceptionist;
-    }
-
-    public void setOfficeContactReceptionist(String officeContactReceptionist) {
-        this.officeContactReceptionist = officeContactReceptionist;
-    }
-
-    public String getReceptionistWorkPlace() {
-        return receptionistWorkPlace;
-    }
-
-    public void setReceptionistWorkPlace(String receptionistWorkPlace) {
-        this.receptionistWorkPlace = receptionistWorkPlace;
-    }
 }

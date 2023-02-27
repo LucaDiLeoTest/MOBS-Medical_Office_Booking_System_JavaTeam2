@@ -4,7 +4,6 @@ import co.gruppo2.studiomedico.DTO.PatientDTO;
 import co.gruppo2.studiomedico.entities.Patient;
 import co.gruppo2.studiomedico.enumerations.PersonStatusEnum;
 import co.gruppo2.studiomedico.repositories.IPatientRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +17,16 @@ public class PatientService{
     private IPatientRepository patientRepository;
 
 
-    public PatientDTO createPatient(@NotNull PatientDTO patientDTO){
+
+    public PatientDTO createPatient(PatientDTO patientDTO){
         Patient patient = convertToEntity(patientDTO);
+        patient.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
         patientRepository.save(patient);
+        patientDTO.setId(patient.getId());
         return patientDTO;
     }
+
+
 
     public PatientDTO findPatientByEmail(String email) throws Exception{
         Optional<Patient> patientOptional = patientRepository.findByEmail(email);
@@ -56,21 +60,21 @@ public class PatientService{
         }
         return patientsDTO;
     }
+    public void logicalDeletePatientById(Long id){
+        Optional<Patient> optionalPatient = patientRepository.findById(id);
+        if(optionalPatient.isPresent()){
+            Patient patient = optionalPatient.get();
+            patient.setPersonStatusEnum(PersonStatusEnum.INACTIVE);
+            patientRepository.save(patient);
+        }
+    }
 
     private Patient convertToEntity(PatientDTO patientDTO){
         Patient patient = new Patient();
-        patient.setId(patientDTO.getId());
         patient.setName(patientDTO.getName());
         patient.setSurname(patientDTO.getSurname());
         patient.setEmail(patientDTO.getEmail());
         patient.setTelephoneNumber(patientDTO.getTelephoneNumber());
         return patient;
     }
-    public void logicalDeletePatientById(Long id) {
-        Optional<Patient> optionalPatient = patientRepository.findById(id);
-        if (optionalPatient.isPresent()) {
-            Patient patient = optionalPatient.get();
-            patient.setPersonStatusEnum(PersonStatusEnum.INACTIVE);
-            patientRepository.save(patient);
-        }
-}}
+}

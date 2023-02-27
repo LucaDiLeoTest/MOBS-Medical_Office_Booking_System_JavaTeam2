@@ -52,7 +52,7 @@ public class BookingService {
         Booking existingBooking = getBookingById(id);
         existingBooking.setStartingTime(booking.getStartingTime());
         existingBooking.setBookingStatusEnum(booking.getBookingStatusEnum());
-        existingBooking.setDoctor(booking.getDoctor());
+        existingBooking.setDoctor1(booking.getDoctor1());
         existingBooking.setPatient(booking.getPatient());
         return iBookingRepository.save(existingBooking);
     }

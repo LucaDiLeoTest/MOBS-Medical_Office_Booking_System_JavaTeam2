@@ -1,6 +1,8 @@
 package co.gruppo2.studiomedico.DTO;
 
 
+import co.gruppo2.studiomedico.entities.ReceptionistEntity;
+
 public class PatientDTO{
     private Long id;
 
@@ -11,6 +13,8 @@ public class PatientDTO{
     private String email;
 
     private String telephoneNumber;
+
+    private ReceptionistEntity receptionist;
 
     public PatientDTO(Long id,String name,String surname,String email,String telephoneNumber){
         this.id = id;

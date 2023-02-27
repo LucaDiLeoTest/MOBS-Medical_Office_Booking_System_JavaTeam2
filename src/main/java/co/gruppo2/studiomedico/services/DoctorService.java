@@ -6,11 +6,12 @@ import co.gruppo2.studiomedico.repositories.IBookingRepository;
 import co.gruppo2.studiomedico.repositories.IDoctorRepository;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class DoctorService {
 
     @Autowired
@@ -24,12 +25,8 @@ public class DoctorService {
         doctor.setName(doctorDTO.getName());
         doctor.setSurname(doctorDTO.getSurname());
         doctor.setEmail(doctorDTO.getEmail());
-        doctor.setOfficeContact(doctorDTO.getOfficeContact());
-        doctor.setWorkplace(doctorDTO.getWorkplace());
-        doctor.setWorkingDays(doctorDTO.getWorkingDays());
         doctorRepository.save(doctor);
-        return new DoctorDTO(doctor.getId(), doctorDTO.getName(), doctorDTO.getSurname(), doctor.getEmail(),
-                doctor.getOfficeContact(), doctor.getWorkplace(), doctor.getWorkingDays());
+        return new DoctorDTO(doctor.getId(), doctorDTO.getName(), doctorDTO.getSurname(), doctor.getEmail());
     }
 
     public Doctor getDoctorById(Long id){
@@ -45,9 +42,6 @@ public class DoctorService {
         doctor.setName(doctorDTO.getName());
         doctor.setSurname(doctorDTO.getSurname());
         doctor.setEmail(doctorDTO.getEmail());
-        doctor.setOfficeContact(doctorDTO.getOfficeContact());
-        doctor.setWorkplace(doctorDTO.getWorkplace());
-        doctor.setWorkingDays(doctorDTO.getWorkingDays());
         doctorRepository.save(doctor);
         return doctorDTO;
     }

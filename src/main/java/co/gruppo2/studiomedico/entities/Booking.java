@@ -24,7 +24,10 @@ public class Booking {
     private BookingStatusEnum bookingStatusEnum;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Doctor doctor;
+    private Doctor doctor1;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ReceptionistEntity receptionist;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
@@ -40,15 +43,15 @@ public class Booking {
      * @param startingTime
      * @param endingTime
      * @param bookingStatusEnum
-     * @param doctor
+     * @param doctor1
      * @param patient
      */
     public Booking(LocalDateTime startingTime,LocalDateTime endingTime,BookingStatusEnum bookingStatusEnum,
-                   Doctor doctor,Patient patient){
+                   Doctor doctor1,Patient patient){
         this.startingTime = startingTime;
         this.endingTime = endingTime;
         this.bookingStatusEnum = bookingStatusEnum;
-        this.doctor = doctor;
+        this.doctor1 = doctor1;
         this.patient = patient;
     }
 
@@ -82,12 +85,12 @@ public class Booking {
         this.bookingStatusEnum = bookingStatusEnum;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Doctor getDoctor1() {
+        return doctor1;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctor1(Doctor doctor1) {
+        this.doctor1 = doctor1;
     }
 
     public Patient getPatient() {

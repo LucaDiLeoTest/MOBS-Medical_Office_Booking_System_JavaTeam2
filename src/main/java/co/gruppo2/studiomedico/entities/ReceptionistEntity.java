@@ -2,6 +2,8 @@ package co.gruppo2.studiomedico.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "receptionist")
 public class ReceptionistEntity extends PersonEntity{
@@ -9,19 +11,21 @@ public class ReceptionistEntity extends PersonEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_receptionist")
     private Long id;
-    @Column(name = "receptionist_office_contact")
-    private String receptionistOfficeContact;
-    @Column(name = "receptionist_workplace")
-    private String receptionistWorkPlace;
+    @OneToMany(mappedBy = "receptionist", cascade = CascadeType.ALL)
+    private List<Patient> patients;
 
-    public ReceptionistEntity() {
+    @OneToOne( cascade = CascadeType.ALL)
+    private Doctor doctor2;
+
+
+    @OneToMany(mappedBy = "receptionist",cascade = CascadeType.ALL)
+    private List<Booking> bookings;
+
+    public ReceptionistEntity(){
     }
 
-    public ReceptionistEntity(String name,String surname,String email,String receptionistOfficeContact,
-                              String receptionistWorkplace){
-        super(name,surname,email);
-        this.receptionistOfficeContact = receptionistOfficeContact;
-        this.receptionistWorkPlace = receptionistWorkplace;
+    public ReceptionistEntity(Long id,String name,String surname,String email,String telephoneNumber){
+        super(id,name,surname,email,telephoneNumber);
     }
 
     public Long getId(){
@@ -32,21 +36,5 @@ public class ReceptionistEntity extends PersonEntity{
         this.id = id;
     }
 
-    //Getters and Setters
 
-    public String getReceptionistOfficeContact() {
-        return receptionistOfficeContact;
-    }
-
-    public void setReceptionistOfficeContact(String receptionistOfficeContact) {
-        this.receptionistOfficeContact = receptionistOfficeContact;
-    }
-
-    public String getReceptionistWorkPlace() {
-        return receptionistWorkPlace;
-    }
-
-    public void setReceptionistWorkPlace(String receptionistWorkPlace) {
-        this.receptionistWorkPlace = receptionistWorkPlace;
-    }
 }

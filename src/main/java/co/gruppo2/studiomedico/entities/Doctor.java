@@ -1,53 +1,45 @@
 package co.gruppo2.studiomedico.entities;
 
-import co.gruppo2.studiomedico.enumerations.DoctorSpecialization;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "doctors")
 public class Doctor extends PersonEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id_doctor")
+    private Long id;
 
-    @Column(name = "office_contact")
-    private String officeContact;
-    @Column(name = "workplace")
-    private String workplace;
-    @Column(name = "working_days")
-    private String workingDays;
+    @OneToOne(mappedBy = "doctor2", cascade = CascadeType.ALL)
+    private ReceptionistEntity receptionist;
 
 
-    public Doctor() {
+    @OneToMany(mappedBy = "doctor1", cascade = CascadeType.ALL)
+    private List<Booking> bookings;
+
+
+    public Doctor(){
     }
 
-    public Doctor(Long id, String name, String surname, String email, String officeContact, String workplace, String workingDays) {
-        super(id,name,surname,email);
-        this.officeContact = officeContact;
-        this.workplace = workplace;
-        this.workingDays = workingDays;
+    public Doctor(Long id,String name,String surname,String email,String telephoneNumber){
+        super(id,name,surname,email,telephoneNumber);
     }
 
-
-    //Getters and Setters
-    public String getOfficeContact() {
-        return officeContact;
+    public Long getId(){
+        return id;
     }
 
-    public void setOfficeContact(String officeContact) {
-        this.officeContact = officeContact;
+    public void setId(Long id){
+        this.id = id;
     }
 
-    public String getWorkplace() {
-        return workplace;
+    public List<Booking> getBookings(){
+        return bookings;
     }
 
-    public void setWorkplace(String workplace) {
-        this.workplace = workplace;
-    }
-
-    public String getWorkingDays() {
-        return workingDays;
-    }
-
-    public void setWorkingDays(String workingDays) {
-        this.workingDays = workingDays;
+    public void setBookings(List<Booking> bookings){
+        this.bookings = bookings;
     }
 }

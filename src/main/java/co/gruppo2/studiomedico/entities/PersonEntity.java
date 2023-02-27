@@ -6,27 +6,30 @@ import jakarta.persistence.*;
 @MappedSuperclass
 public abstract class PersonEntity {
 
-
-    @Column(nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
-    @Column(nullable = false)
     private String surname;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true)
     private String email;
-    @Enumerated
+    @Column(unique = true)
+    private String telephoneNumber;
+    @Enumerated(EnumType.STRING)
     private PersonStatusEnum personStatusEnum;
 
 
     public PersonEntity() {
     }
 
-    public PersonEntity(String name, String surname, String email) {
+    public PersonEntity(Long id, String name,String surname,String email,String telephoneNumber){
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        personStatusEnum = PersonStatusEnum.ACTIVE;
+        this.telephoneNumber = telephoneNumber;
+        this.personStatusEnum = PersonStatusEnum.ACTIVE;
     }
-
 
     public String getName() {
         return name;
@@ -50,6 +53,14 @@ public abstract class PersonEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTelephoneNumber(){
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber){
+        this.telephoneNumber = telephoneNumber;
     }
 
     public PersonStatusEnum getPersonStatusEnum(){

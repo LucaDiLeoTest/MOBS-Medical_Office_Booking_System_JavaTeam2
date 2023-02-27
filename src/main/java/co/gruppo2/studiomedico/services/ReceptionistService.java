@@ -29,11 +29,9 @@ public class ReceptionistService {
         receptionist.setName(receptionistDTO.getName());
         receptionist.setSurname(receptionistDTO.getSurname());
         receptionist.setEmail(receptionistDTO.getEmail());
-        receptionist.setReceptionistOfficeContact(receptionistDTO.getOfficeContactReceptionist());
-        receptionist.setReceptionistWorkPlace(receptionistDTO.getReceptionistWorkPlace());
         receptionistRepository.save(receptionist);
         return new ReceptionistDTO(receptionist.getId(), receptionist.getName(), receptionist.getSurname(),
-                receptionist.getEmail(), receptionist.getReceptionistOfficeContact(), receptionist.getReceptionistWorkPlace());
+                receptionist.getEmail());
     }
 
     public Optional<ReceptionistEntity> getReceptionistById(Long id){
@@ -48,8 +46,6 @@ public class ReceptionistService {
         if(receptionistRepository.existsById(id)){
             receptionist = receptionistRepository.getById(id);
             receptionist.setEmail(email);
-            receptionist.setReceptionistOfficeContact(contact);
-            receptionist.setReceptionistWorkPlace(workPlace);
             return  receptionistRepository.save(receptionist);
         } else {
             receptionist = new ReceptionistEntity();
