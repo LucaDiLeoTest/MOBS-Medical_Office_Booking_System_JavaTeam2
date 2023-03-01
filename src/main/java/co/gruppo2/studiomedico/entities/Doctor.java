@@ -12,9 +12,11 @@ public class Doctor extends PersonEntity {
     @Column(name = "id_doctor")
     private Long id;
 
-    @OneToOne(mappedBy = "doctor2", cascade = CascadeType.ALL)
-    private ReceptionistEntity receptionist;
+    @OneToMany(mappedBy = "doctor")
+    private List<Patient> patients;
 
+    /*@OneToOne(mappedBy = "doctor2", cascade = CascadeType.ALL)
+    private ReceptionistEntity receptionist;*/
 
     @OneToMany(mappedBy = "doctor1", cascade = CascadeType.ALL)
     private List<Booking> bookings;

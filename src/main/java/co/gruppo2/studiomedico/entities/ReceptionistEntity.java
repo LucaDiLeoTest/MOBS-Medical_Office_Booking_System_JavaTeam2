@@ -11,15 +11,14 @@ public class ReceptionistEntity extends PersonEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_receptionist")
     private Long id;
-    @OneToMany(mappedBy = "receptionist", cascade = CascadeType.ALL)
-    private List<Patient> patients;
+    /*@OneToMany(mappedBy = "receptionist", cascade = CascadeType.ALL)
+    private List<Patient> patients;*/
 
     @OneToOne( cascade = CascadeType.ALL)
     private Doctor doctor2;
 
-
-    @OneToMany(mappedBy = "receptionist",cascade = CascadeType.ALL)
-    private List<Booking> bookings;
+    /*@OneToMany(mappedBy = "receptionist",cascade = CascadeType.ALL)
+    private List<Booking> bookings;*/
 
     public ReceptionistEntity(){
     }

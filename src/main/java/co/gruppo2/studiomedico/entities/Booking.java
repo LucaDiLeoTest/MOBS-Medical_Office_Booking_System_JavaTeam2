@@ -26,8 +26,8 @@ public class Booking {
     @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctor1;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ReceptionistEntity receptionist;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    private ReceptionistEntity receptionist;*/
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;

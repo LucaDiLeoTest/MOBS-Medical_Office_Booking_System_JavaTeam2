@@ -18,8 +18,8 @@ public class Patient extends PersonEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Doctor doctor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ReceptionistEntity receptionist;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    private ReceptionistEntity receptionist;*/
 
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Booking> bookings;
@@ -47,13 +47,13 @@ public class Patient extends PersonEntity{
         this.doctor = doctor;
     }
 
-    public ReceptionistEntity getReceptionist(){
+    /*public ReceptionistEntity getReceptionist(){
         return receptionist;
     }
 
     public void setReceptionist(ReceptionistEntity receptionist){
         this.receptionist = receptionist;
-    }
+    }*/
 
     public List<Booking> getBookings(){
         return bookings;

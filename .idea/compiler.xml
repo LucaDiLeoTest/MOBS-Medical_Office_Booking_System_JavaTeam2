@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="studiomedico" />
         <module name="Medical_Office_Booking_System_JavaTeam2" />
-        <module name="MOBS-Medical_Office_Booking_System_JavaTeam2" />
         <module name="Medical_Office_Booking_System" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MOBS-Medical_Office_Booking_System_JavaTeam2" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
