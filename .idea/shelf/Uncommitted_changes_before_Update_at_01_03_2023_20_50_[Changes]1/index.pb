@@ -13,6 +13,8 @@ Jsrc/main/java/co/gruppo2/studiomedico/repositories/IBookingRepository.java,4\9
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 ‹
 [.idea/shelf/Uncommitted_changes_before_Checkout_at_27_02_2023_14_18_[Changes]/shelved.patch,6\2\62da072240746aa953d6acf06c65a5f9d1e70ebb
+w
+Gsrc/main/java/co/gruppo2/studiomedico/controllers/DoctorController.java,2\4\24c68e79941d7d835d01138f4a3b8a638510df84
 
 Osrc/main/java/co/gruppo2/studiomedico/repositories/IReceptionistRepository.java,0\d\0dd86edc15432280615ee3bc630e05eade7f8acb
 r
@@ -23,6 +25,8 @@ Q.idea/shelf/Uncommitted_changes_before_Checkout_at_27_02_2023_14_15__Changes_.x
 studiomedico.iml,8\7\875edbd8b39415e53e719a9d2376ddd074553d51
 k
 ;src/main/java/co/gruppo2/studiomedico/entities/Booking.java,7\0\709aeb9561f1cad6eb3471a36a30cfc9f3473c8d
+r
+Bsrc/main/java/co/gruppo2/studiomedico/services/BookingService.java,9\f\9f4f9e481db9c34b1b693cbc17c1c0812346915b
 h
 8src/main/java/co/gruppo2/studiomedico/DTO/DoctorDTO.java,f\c\fcbe1fb8240a4e20b43406ac8d1f556022c4879f
 i

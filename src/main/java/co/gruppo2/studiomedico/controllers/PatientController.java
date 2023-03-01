@@ -2,7 +2,7 @@ package co.gruppo2.studiomedico.controllers;
 
 import co.gruppo2.studiomedico.DTO.PatientDTO;
 import co.gruppo2.studiomedico.services.PatientService;
-import jakarta.validation.Valid;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,8 @@ public class PatientController{
 
 
     @PostMapping("/add")
-    public ResponseEntity<PatientDTO> createPatientDTO(@RequestBody  PatientDTO patientDTO){
+    public ResponseEntity<PatientDTO> createPatientDTO(@RequestBody  PatientDTO patientDTO)
+            throws JsonProcessingException{
         PatientDTO savedPatient = patientService.createPatient(patientDTO);
         return new ResponseEntity<>(savedPatient,HttpStatus.CREATED);
     }

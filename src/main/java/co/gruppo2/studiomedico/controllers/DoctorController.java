@@ -6,7 +6,6 @@ import co.gruppo2.studiomedico.entities.Doctor;
 
 import co.gruppo2.studiomedico.repositories.IDoctorRepository;
 import co.gruppo2.studiomedico.services.DoctorService;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +18,9 @@ public class DoctorController {
 
     @Autowired
     DoctorService doctorService;
+
+    @Autowired
+    IDoctorRepository doctorRepository;
 
     @GetMapping("/{id}")
     public Doctor getDoctorById(@PathVariable Long id){
@@ -42,7 +44,7 @@ public class DoctorController {
 
     @DeleteMapping("/{id}")
     public void deleteDoctorById(@PathVariable Long id){
-
+        doctorRepository.deleteById(id);
     }
 
 }
