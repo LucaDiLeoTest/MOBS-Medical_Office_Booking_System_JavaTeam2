@@ -3,7 +3,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/newdb
     username: root
-    password: PinoDaniele03
+    password: focamonaca
 
   jpa:
     database: mysql

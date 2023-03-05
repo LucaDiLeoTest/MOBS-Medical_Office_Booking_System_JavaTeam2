@@ -61,11 +61,12 @@ public class BookingService {
      * This method logical delete a booking using its id and setting it's status on DELETED
      * @param id
      */
-    public void logicalDeleteBooking(long id){
+    public Booking logicalDeleteBooking(long id){
         Booking logicalDeleteBooking = getBookingById(id);
         logicalDeleteBooking.setBookingStatusEnum(BookingStatusEnum.DELETED);
         iBookingRepository.save(logicalDeleteBooking);
         System.out.println("The booking " + id + " has been deleted!");
+        return logicalDeleteBooking;
     }
 
 

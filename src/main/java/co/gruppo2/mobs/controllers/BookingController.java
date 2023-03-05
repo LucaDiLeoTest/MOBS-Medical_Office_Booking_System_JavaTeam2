@@ -43,7 +43,7 @@ public class BookingController {
     }
 
     @DeleteMapping("/{id}")
-    public void logicalDeleteBooking(@PathVariable long id){
-        bookingService.logicalDeleteBooking(id);
+    public Booking logicalDeleteBooking(@PathVariable long id){
+        return bookingService.logicalDeleteBooking(id);
     }
 }
