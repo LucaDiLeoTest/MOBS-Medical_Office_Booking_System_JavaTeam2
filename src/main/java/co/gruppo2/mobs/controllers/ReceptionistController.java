@@ -37,9 +37,9 @@ public class ReceptionistController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<ReceptionistDTO> createReceptionist(@RequestBody ReceptionistDTO receptionist){
-        ReceptionistDTO receptionistDTO = receptionistService.createAndSaveReceptionist(receptionist);
-        return new ResponseEntity<>(receptionistDTO, HttpStatus.CREATED);
+    public ResponseEntity<Receptionist> createReceptionist(@RequestBody Receptionist receptionist){
+       receptionistService.createAndSaveReceptionist(receptionist);
+        return new ResponseEntity<>(receptionist, HttpStatus.CREATED);
     }
 
 
