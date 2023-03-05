@@ -1,5 +1,6 @@
 package co.gruppo2.mobs.entities;
 
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import jakarta.persistence.*;
 
 @Entity

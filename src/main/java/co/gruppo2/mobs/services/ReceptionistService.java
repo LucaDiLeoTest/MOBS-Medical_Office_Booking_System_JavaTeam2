@@ -4,6 +4,7 @@ import co.gruppo2.mobs.DTO.ReceptionistDTO;
 import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.enumerations.BookingStatusEnum;
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
 import co.gruppo2.mobs.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +29,12 @@ public class ReceptionistService{
     /**
      * Creates and saves a new receptionist entity with the given receptionistDTO
      *
-     * @param receptionistDTO The DTO containing the receptionist's data
+     * @param receptionist The DTO containing the receptionist's data
      * @return The saved receptionist DTO
      */
-    public ReceptionistDTO createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
-        Receptionist receptionist = new Receptionist();
-        receptionist.setName(receptionistDTO.getName());
-        receptionist.setSurname(receptionistDTO.getSurname());
-        receptionist.setEmail(receptionistDTO.getEmail());
-        receptionistRepository.save(receptionist);
-        return new ReceptionistDTO(receptionist.getId(),receptionist.getName(),receptionist.getSurname(),
-                receptionist.getEmail());
+    public Receptionist createAndSaveReceptionist(Receptionist receptionist){
+      receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
+       return receptionistRepository.save(receptionist);
     }
 
     /**
