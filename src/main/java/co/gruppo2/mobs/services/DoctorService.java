@@ -2,6 +2,7 @@ package co.gruppo2.mobs.services;
 
 import co.gruppo2.mobs.DTO.DoctorDTO;
 import co.gruppo2.mobs.entities.Doctor;
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
 import co.gruppo2.mobs.repositories.IDoctorRepository;
 import jakarta.validation.constraints.NotNull;
@@ -64,6 +65,16 @@ public class DoctorService {
         doctor.setEmail(doctorDTO.getEmail());
         doctorRepository.save(doctor);
         return doctorDTO;
+    }
+
+    /**
+     * Sets the PersonStatusEnum to inactive for the logical deletion
+     * @param id
+     */
+    public void deleteDoctorById(Long id){
+        Doctor doctor = getDoctorById(id);
+        doctor.setPersonStatusEnum(PersonStatusEnum.INACTIVE);
+        doctorRepository.save(doctor);
     }
 
 }
