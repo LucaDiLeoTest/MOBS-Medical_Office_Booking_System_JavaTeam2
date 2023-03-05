@@ -19,9 +19,6 @@ public class DoctorController {
     @Autowired
     DoctorService doctorService;
 
-    @Autowired
-    IDoctorRepository doctorRepository;
-
     @GetMapping("/")
     public String doctorMsg(){
         return "You are in the doctor controller!";
@@ -49,7 +46,7 @@ public class DoctorController {
 
     @DeleteMapping("/{id}")
     public void deleteDoctorById(@PathVariable Long id){
-        doctorRepository.deleteById(id);
+        doctorService.deleteDoctorById(id);
     }
 
 }
