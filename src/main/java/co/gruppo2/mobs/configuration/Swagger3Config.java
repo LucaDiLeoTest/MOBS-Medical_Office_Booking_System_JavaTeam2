@@ -20,7 +20,7 @@ public class Swagger3Config {
     }
 
     @Bean
-    OpenAPI jlyShopOpenApi() {
+    OpenAPI MOBSOpenApi() {
         return new OpenAPI()
                 .info(new Info()
                         .title("[MOBS]Medical Office Booking System API")

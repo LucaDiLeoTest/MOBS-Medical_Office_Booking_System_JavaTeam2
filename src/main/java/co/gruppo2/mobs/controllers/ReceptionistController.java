@@ -1,6 +1,5 @@
 package co.gruppo2.mobs.controllers;
 
-import co.gruppo2.mobs.DTO.ReceptionistDTO;
 import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.services.ReceptionistService;
