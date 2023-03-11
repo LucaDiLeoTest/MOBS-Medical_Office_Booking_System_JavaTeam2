@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api-booking")
+@RequestMapping("/api/booking")
 public class BookingController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class BookingController {
         return bookingService.getAllBooking();}
 
     @GetMapping("/{id}")
-    public Booking getBookingById(@PathVariable long id){
+    public Booking getBookingById(@PathVariable Long id){
         return bookingService.getBookingById(id);
     }
 

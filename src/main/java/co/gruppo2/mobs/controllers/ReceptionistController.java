@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api-receptionist")
+@RequestMapping("/api/receptionist")
 public class ReceptionistController {
 
     @Autowired

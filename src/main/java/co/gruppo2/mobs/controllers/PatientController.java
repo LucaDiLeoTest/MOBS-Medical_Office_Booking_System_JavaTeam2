@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api-patient")
+@RequestMapping("/api/patient")
 public class PatientController{
     @Autowired
     private PatientService patientService;
 
 
-    @PostMapping("/add")
+    @PostMapping("/")
     public ResponseEntity<PatientDTO> createPatientDTO(@RequestBody  PatientDTO patientDTO)
             throws JsonProcessingException{
         PatientDTO savedPatient = patientService.createPatient(patientDTO);
