@@ -33,18 +33,20 @@ public class ReceptionistService{
      * @return The saved receptionist DTO
      */
     public Receptionist createAndSaveReceptionist(Receptionist receptionist){
-      receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
+      receptionist.setId(null);
+        receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
        return receptionistRepository.save(receptionist);
     }
 
     /**
-     * Retrieves a receptionist entity by its id
      *
-     * @param id The id of the receptionist to retrieve
-     * @return An optional containing the receptionist entity if found, empty otherwise
+     * Retrieves receptionist found by id
+     * @return receptionist found
      */
-    public Optional<Receptionist> getReceptionistById(Long id){
-        return receptionistRepository.findById(id);
+
+
+    public Optional<Receptionist> getOne(Long id){
+      return receptionistRepository.findById(id);
     }
 
     /**
@@ -71,6 +73,8 @@ public class ReceptionistService{
         if(receptionistRepository.existsById(id)){
             receptionist = receptionistRepository.getById(id);
             receptionist.setEmail(email);
+            receptionist.setTelephoneNumber(contact);
+            receptionist.setWorkplace(workPlace);
             return receptionistRepository.save(receptionist);
         } else {
             receptionist = new Receptionist();
@@ -84,138 +88,21 @@ public class ReceptionistService{
      *
      * @param id The id of the receptionist to delete
      */
-    public void deleteSecretaryById(Long id){
-        receptionistRepository.deleteById(id);
-
-    }
-
-    /**
-     * Deletes all receptionist entities
-     */
-    public void deleteAllSecretary(){
-        receptionistRepository.deleteAll();
-
-    }
-
-    //-----------------------------------Reservation logic----------------------------------------------//
-
-    /**
-     * Creates and saves a new reservation with the given booking information
-     *
-     * @param booking The booking information for the reservation
-     */
-    public void createAndSaveReservation(Booking booking){
-        booking.setBookingStatusEnum(BookingStatusEnum.CONFIRMED);
-        bookingRepository.saveAndFlush(booking);
-    }
-
-    /**
-     * Deletes a reservation by its id
-     *
-     * @param id The id of the reservation to delete
-     * @throws Exception If the reservation is not found
-     */
-    public void deleteReservationById(Long id) throws Exception{
-        if(bookingRepository.existsById(id)){
-            bookingRepository.deleteById(id);
+    public Receptionist logicalDelete(Long id) {
+        Receptionist receptionist;
+        if (receptionistRepository.existsById(id)) {
+            receptionist = receptionistRepository.getById(id);
+            receptionist.setPersonStatusEnum(PersonStatusEnum.INACTIVE);
+            return receptionistRepository.save(receptionist);
         } else {
-            throw new Exception("Reservation not found!");
-        }
-    }
-
-    /**
-     * Deletes all reservations
-     */
-    public void deleteAllReservations(){
-        bookingRepository.deleteAll();
-    }
-
-
-    /**
-     * Retrieves all reservations
-     *
-     * @return A list containing all reservations
-     */
-    public List<Booking> getAllReservations(){
-        return bookingRepository.findAll();
-    }
-
-
-    /**
-     * Retrieves a reservation by its id
-     *
-     * @param id The id of the reservation to retrieve
-     * @return An optional containing the reservation if found, empty otherwise
-     * @throws Exception If the reservation is not found
-     */
-    public Optional<Booking> getReservationById(Long id) throws Exception{
-        if(bookingRepository.existsById(id)){
-            return bookingRepository.findById(id);
-        } else {
-            throw new Exception("Reservation not found");
+            receptionist = new Receptionist();
         }
 
-    }
-
-
-    /**
-     * Updates a reservation's starting time and sets its status to "modified"
-     *
-     * @param id        The id of the reservation to update
-     * @param startTime The new starting time to set for the reservation
-     * @return The updated reservation
-     */
-    public Booking updateReservation(Long id,LocalDateTime startTime,LocalDateTime endTime){
-        Booking booking;
-        if(bookingRepository.existsById(id)){
-            booking = bookingRepository.getById(id);
-            booking.setStartingTime(startTime);
-            //  booking.setEndingTime(endTime);
-        } else {
-
-            booking = new Booking();
-        }
-        booking.setBookingStatusEnum(BookingStatusEnum.MODIFIED);
-        booking = bookingRepository.save(booking);
-        return booking;
-    }
-
-    //-----LOGICAL DELETE AND LOGICAL SET STATUS-------//
-
-    /**
-     * Deletes all reservations with a status of "expired"
-     *
-     * @return A list containing all reservations, including those deleted
-     */
-    public List<Booking> logicalDelete(){
-        List<Booking> reservations = bookingRepository.findAll();
-
-        for(Booking booking : reservations){
-            if(booking.getBookingStatusEnum() != null && booking.getBookingStatusEnum() == BookingStatusEnum.EXPIRED){
-                bookingRepository.delete(booking);
-            }
-        }
-        return reservations;
-    }
-
-
-    /**
-     * Sets the status of all reservations that have already ended to "expired"
-     *
-     * @return A list containing all updated reservations
-     */
-    public List<Booking> logicalSetStatus(){
-        LocalDateTime now = LocalDateTime.now();
-        List<Booking> bookings = bookingRepository.findAll();
-        for(Booking booking : bookings){
-            if(booking.getEndingTime() != null && booking.getEndingTime().isBefore(now)){
-                booking.setBookingStatusEnum(BookingStatusEnum.EXPIRED);
-            }
-        }
-        return bookingRepository.saveAll(bookings);
+        return receptionist;
     }
 
 }
+
 
 
 

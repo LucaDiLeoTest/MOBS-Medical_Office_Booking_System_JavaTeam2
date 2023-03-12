@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="studiomedico" />
-        <module name="MOBS-Medical_Office_Booking_System_JavaTeam2" />
         <module name="Medical_Office_Booking_System_JavaTeam2" />
         <module name="Medical_Office_Booking_System" />
       </profile>

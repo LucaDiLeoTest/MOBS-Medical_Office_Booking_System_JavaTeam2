@@ -1,5 +1,6 @@
 package co.gruppo2.mobs.entities;
 
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -26,8 +27,8 @@ public class Patient extends Person {
     public Patient(){
     }
 
-    public Patient(Long id,String name,String surname,String email,String telephoneNumber){
-        super(id,name,surname,email,telephoneNumber);
+    public Patient(Long id, String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
+        super(id,name,surname,email,telephoneNumber, personStatusEnum);
     }
 
     public Long getId(){

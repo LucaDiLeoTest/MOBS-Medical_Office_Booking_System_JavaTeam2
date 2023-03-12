@@ -10,6 +10,9 @@ public class Receptionist extends Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_receptionist")
     private Long id;
+
+    @Column(name = "workplace_receptionist")
+    private String workplace;
     /*@OneToMany(mappedBy = "receptionist", cascade = CascadeType.ALL)
     private List<Patient> patients;*/
 
@@ -22,8 +25,9 @@ public class Receptionist extends Person {
     public Receptionist(){
     }
 
-    public Receptionist(Long id, String name, String surname, String email, String telephoneNumber){
-        super(id,name,surname,email,telephoneNumber);
+    public Receptionist(Long id, String name, String surname, String email, String telephoneNumber, String workplace, PersonStatusEnum personStatusEnum){
+        super(id,name,surname,email,telephoneNumber, personStatusEnum);
+        this.workplace = workplace;
     }
 
     public Long getId(){
@@ -34,5 +38,11 @@ public class Receptionist extends Person {
         this.id = id;
     }
 
+    public String getWorkplace() {
+        return workplace;
+    }
 
+    public void setWorkplace(String workplace) {
+        this.workplace = workplace;
+    }
 }

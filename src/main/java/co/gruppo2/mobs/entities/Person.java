@@ -22,13 +22,13 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(Long id, String name, String surname, String email, String telephoneNumber){
+    public Person(Long id, String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
-        this.personStatusEnum = PersonStatusEnum.ACTIVE;
+        this.personStatusEnum = personStatusEnum;
     }
 
     public String getName() {
