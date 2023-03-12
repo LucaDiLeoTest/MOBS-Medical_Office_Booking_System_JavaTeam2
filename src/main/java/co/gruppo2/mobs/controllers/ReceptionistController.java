@@ -51,7 +51,7 @@ public class ReceptionistController {
 
     @DeleteMapping("/{id}")
     public Receptionist logicalDelete(@PathVariable Long id){
-        return receptionistService.deleteSecretaryById(id);
+        return receptionistService.logicalDelete(id);
     }
 
 }
