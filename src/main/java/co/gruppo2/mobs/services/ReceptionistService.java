@@ -33,7 +33,6 @@ public class ReceptionistService{
      * @return The saved receptionist DTO
      */
     public Receptionist createAndSaveReceptionist(Receptionist receptionist){
-      receptionist.setId(null);
         receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
        return receptionistRepository.save(receptionist);
     }

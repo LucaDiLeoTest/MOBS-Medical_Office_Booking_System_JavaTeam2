@@ -1,5 +1,6 @@
 package co.gruppo2.mobs.services;
 
+import co.gruppo2.mobs.DTO.BookingDTO;
 import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.enumerations.BookingStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
@@ -17,10 +18,13 @@ public class BookingService {
 
     /**
      * This method insert a new Booking in the table
-     * @param booking
+     * @param bookingDTO
      * @return
      */
-    public Booking createBooking(Booking booking) {
+    public Booking createBooking(BookingDTO bookingDTO) {
+        Booking booking = new Booking();
+        booking.setStartingTime(bookingDTO.getStartingTime());
+        booking.setBookingStatusEnum(BookingStatusEnum.PENDING);
         return iBookingRepository.save(booking);
     }
     /**

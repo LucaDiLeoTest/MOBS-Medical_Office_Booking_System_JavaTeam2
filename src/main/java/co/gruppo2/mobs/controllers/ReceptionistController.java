@@ -1,14 +1,10 @@
 package co.gruppo2.mobs.controllers;
 
-import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.services.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +22,7 @@ public class ReceptionistController {
     }
 
 
-    @PostMapping("")
+    @PostMapping("/")
     public Receptionist create(@RequestBody Receptionist receptionist) {
 
         receptionistService.createAndSaveReceptionist(receptionist);
