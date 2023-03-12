@@ -42,7 +42,7 @@ public class DoctorService {
      @return the Doctor object representing the found doctor
      */
     public Doctor getDoctorById(Long id){
-        return doctorRepository.getById(id);
+        return doctorRepository.findById(id).get();
     }
 
     /**

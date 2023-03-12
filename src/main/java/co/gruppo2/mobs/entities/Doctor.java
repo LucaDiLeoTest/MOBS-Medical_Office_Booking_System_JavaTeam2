@@ -1,5 +1,6 @@
 package co.gruppo2.mobs.entities;
 
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -25,8 +26,8 @@ public class Doctor extends Person {
     public Doctor(){
     }
 
-    public Doctor(Long id,String name,String surname,String email,String telephoneNumber){
-        super(id,name,surname,email,telephoneNumber);
+    public Doctor(Long id, String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
+        super(id,name,surname,email,telephoneNumber, personStatusEnum);
     }
 
     public Long getId(){

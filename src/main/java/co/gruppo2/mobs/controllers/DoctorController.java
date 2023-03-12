@@ -3,8 +3,6 @@ package co.gruppo2.mobs.controllers;
 
 import co.gruppo2.mobs.DTO.DoctorDTO;
 import co.gruppo2.mobs.entities.Doctor;
-
-import co.gruppo2.mobs.repositories.IDoctorRepository;
 import co.gruppo2.mobs.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api-doctor")
+@RequestMapping("/api/doctor")
 public class DoctorController {
 
     @Autowired
