@@ -11,9 +11,9 @@ public abstract class Person {
     private Long id;
     private String name;
     private String surname;
-    @Column()
+    @Column(unique = true)
     private String email;
-    @Column()
+    @Column(unique = true)
     private String telephoneNumber;
     @Enumerated(EnumType.STRING)
     private PersonStatusEnum personStatusEnum;
