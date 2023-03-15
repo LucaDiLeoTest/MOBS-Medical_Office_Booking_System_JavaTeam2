@@ -4,32 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Fix Bug">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2023_20_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2023_20_50__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0d5ae58a3804c9999a4663be262cf6f8f08116ed" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0dd86edc15432280615ee3bc630e05eade7f8acb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14a4cbfb56b5e10c1c8da69548924758644c24f2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/291ad2b26f640f6f22210442e78c57f644345423" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/49396401571f6c31d5a2fc30f51dd78d05755c70" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/2/62da072240746aa953d6acf06c65a5f9d1e70ebb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/709aeb9561f1cad6eb3471a36a30cfc9f3473c8d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7ec616dcdb9af5f0ccefc21581f962825ed8bba5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/f/cfe3aa2d739cca8fdba5d16d0d141a8209f34af6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f90d6e70ce89c6ccab19d36d0ba7b3de194532af" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcbe1fb8240a4e20b43406ac8d1f556022c4879f" beforeDir="false" />
+    <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Fix Bug e the patient service">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/entities/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/services/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/services/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/DTO/BookingDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/DTO/BookingDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/BookingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/BookingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/BookingService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/DoctorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/ReceptionistService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/ReceptionistService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/PatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/PatientService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feat" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,7 +106,7 @@
     </configuration>
     <configuration name="StudiomedicoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.gruppo2.studiomedico.StudiomedicoApplication" />
-      <module name="studiomedico" />
+      <module name="MOBS-Medical_Office_Booking_System_JavaTeam2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="co.gruppo2.studiomedico.*" />
@@ -138,6 +119,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StudiomedicoApplication" />
         <item itemvalue="Application.MedicalOfficeBookingSystemApplication" />
         <item itemvalue="Application.StudiomedicoApplication" />
         <item itemvalue="Application.StudiomedicoApplication (1)" />
@@ -196,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678635657671</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fix Bug e the patient service">
+      <created>1678825882561</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678825882561</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,6 +215,7 @@
     <MESSAGE value="implements logical delete for the reservation and minor fix" />
     <MESSAGE value="Add method delete e method convertToEntity in Patient" />
     <MESSAGE value="Fix Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Bug" />
+    <MESSAGE value="Fix Bug e the patient service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Bug e the patient service" />
   </component>
 </project>
