@@ -49,7 +49,7 @@ public class PatientService{
      */
     public PatientDTO findPatientByEmail(String email) throws Exception{
         Optional<Patient> patientOptional = patientRepository.findByEmail(email);
-        if(!patientOptional.isPresent()){
+        if(!patientOptional.isPresent()|| (patientOptional.get().getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE))){
             throw new Exception("Patient not found with email: "+email);
         } else {
             Patient patient = patientOptional.get();
@@ -67,7 +67,7 @@ public class PatientService{
      */
     public PatientDTO findPatientById(Long id){
         Optional<Patient> patientOptional = patientRepository.findById(id);
-        if(!patientOptional.isPresent()){
+        if(!patientOptional.isPresent() || (patientOptional.get().getPersonStatusEnum().equals(PersonStatusEnum.INACTIVE))){
             throw new NullPointerException("Patient not found with id: "+id);
         } else {
             Patient patient = patientOptional.get();
@@ -90,7 +90,7 @@ public class PatientService{
             patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
                     patient.getTelephoneNumber()));
         }
-        return patientsDTO;
+        return patientsDTO;//TODO Fix this problem for inactive patient
     }
 
     /**

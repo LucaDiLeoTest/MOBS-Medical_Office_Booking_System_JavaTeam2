@@ -1,16 +1,12 @@
 package co.gruppo2.mobs.services;
 
-import co.gruppo2.mobs.DTO.ReceptionistDTO;
-import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.entities.Receptionist;
-import co.gruppo2.mobs.enumerations.BookingStatusEnum;
 import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
 import co.gruppo2.mobs.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

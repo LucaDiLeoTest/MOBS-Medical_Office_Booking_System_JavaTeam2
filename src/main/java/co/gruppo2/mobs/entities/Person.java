@@ -12,6 +12,7 @@ public abstract class Person {
     @Column(name = "email",unique = true)
     private String email;
     @Column(name = "telephone_number",unique = true)
+
     private String telephoneNumber;
     @Enumerated(EnumType.STRING)
     @Column(name = "record_status")
