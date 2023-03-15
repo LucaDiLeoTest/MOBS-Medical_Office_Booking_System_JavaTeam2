@@ -3,7 +3,6 @@ package co.gruppo2.mobs.controllers;
 
 import co.gruppo2.mobs.DTO.BookingDTO;
 import co.gruppo2.mobs.entities.Booking;
-import co.gruppo2.mobs.enumerations.BookingStatusEnum;
 import co.gruppo2.mobs.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

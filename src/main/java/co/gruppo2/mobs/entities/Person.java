@@ -5,32 +5,40 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "name",nullable = false)
     private String name;
+    @Column(name = "surname",nullable = false)
     private String surname;
-    @Column()
+    @Column(name = "email",unique = true)
     private String email;
-    @Column()
+    @Column(name = "telephone_number",unique = true)
     private String telephoneNumber;
     @Enumerated(EnumType.STRING)
+    @Column(name = "record_status")
     private PersonStatusEnum personStatusEnum;
 
-
+    /**
+     * No args constructor
+     */
     public Person() {
     }
 
-    public Person(Long id, String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
-        this.id = id;
+    /**
+     * All args constructor
+     * @param name
+     * @param surname
+     * @param email
+     * @param telephoneNumber
+     * @param personStatusEnum
+     */
+    public Person(String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
         this.personStatusEnum = personStatusEnum;
     }
-
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
     public String getName() {
         return name;
     }
@@ -55,19 +63,19 @@ public abstract class Person {
         this.email = email;
     }
 
-    public String getTelephoneNumber(){
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(String telephoneNumber){
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public PersonStatusEnum getPersonStatusEnum(){
+    public PersonStatusEnum getPersonStatusEnum() {
         return personStatusEnum;
     }
 
-    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum){
+    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum) {
         this.personStatusEnum = personStatusEnum;
     }
 }

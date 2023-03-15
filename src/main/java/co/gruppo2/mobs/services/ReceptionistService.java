@@ -73,7 +73,6 @@ public class ReceptionistService{
             receptionist = receptionistRepository.getById(id);
             receptionist.setEmail(email);
             receptionist.setTelephoneNumber(contact);
-            receptionist.setWorkplace(workPlace);
             return receptionistRepository.save(receptionist);
         } else {
             receptionist = new Receptionist();

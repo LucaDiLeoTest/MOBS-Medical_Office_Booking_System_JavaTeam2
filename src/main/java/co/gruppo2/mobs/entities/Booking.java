@@ -55,13 +55,9 @@ public class Booking {
         this.patient = patient;
     }
 
-    //getter and setter
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public LocalDateTime getStartingTime() {

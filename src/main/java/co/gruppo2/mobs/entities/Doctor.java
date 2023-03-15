@@ -16,33 +16,64 @@ public class Doctor extends Person {
     @OneToMany(mappedBy = "doctor")
     private List<Patient> patients;
 
-    /*@OneToOne(mappedBy = "doctor2", cascade = CascadeType.ALL)
-    private ReceptionistEntity receptionist;*/
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Receptionist receptionist;
 
     @OneToMany(mappedBy = "doctor1", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
-
+    /**
+     * No args constructor
+     */
     public Doctor(){
     }
 
-    public Doctor(Long id, String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
-        super(id,name,surname,email,telephoneNumber, personStatusEnum);
+    /**
+     * All args constructor
+     * @param name
+     * @param surname
+     * @param email
+     * @param telephoneNumber
+     * @param personStatusEnum
+     * @param patients
+     * @param receptionist
+     * @param bookings
+     */
+    public Doctor(String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum, List<Patient> patients, Receptionist receptionist, List<Booking> bookings) {
+        super(name, surname, email, telephoneNumber, personStatusEnum);
+        this.patients = patients;
+        this.receptionist = receptionist;
+        this.bookings = bookings;
     }
 
-    public Long getId(){
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id){
-        this.id = id;
+    public List<Patient> getPatients() {
+        return patients;
     }
 
-    public List<Booking> getBookings(){
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+
+    public Receptionist getReceptionist() {
+        return receptionist;
+    }
+
+    public void setReceptionist(Receptionist receptionist) {
+        this.receptionist = receptionist;
+    }
+
+    public List<Booking> getBookings() {
         return bookings;
     }
 
-    public void setBookings(List<Booking> bookings){
+    public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 }
