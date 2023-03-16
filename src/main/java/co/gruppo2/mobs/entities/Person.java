@@ -5,14 +5,15 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class Person {
-    @Column(name = "name",nullable = false)
+    @Column(name = "name")
     private String name;
-    @Column(name = "surname",nullable = false)
+    @Column(name = "surname")
     private String surname;
-    @Column(name = "email",unique = true)
+    @Column(name = "fiscal_code", nullable = false, unique = true)
+    private String fiscalCode;
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     @Column(name = "telephone_number",unique = true)
-
     private String telephoneNumber;
     @Enumerated(EnumType.STRING)
     @Column(name = "record_status")
@@ -28,17 +29,20 @@ public abstract class Person {
      * All args constructor
      * @param name
      * @param surname
+     * @param fiscalCode
      * @param email
      * @param telephoneNumber
      * @param personStatusEnum
      */
-    public Person(String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum) {
+    public Person(String name, String surname, String fiscalCode, String email, String telephoneNumber, PersonStatusEnum personStatusEnum) {
         this.name = name;
         this.surname = surname;
+        this.fiscalCode = fiscalCode;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
         this.personStatusEnum = personStatusEnum;
     }
+
     //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
     public String getName() {
         return name;
@@ -54,6 +58,14 @@ public abstract class Person {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getFiscalCode() {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode(String fiscalCode) {
+        this.fiscalCode = fiscalCode;
     }
 
     public String getEmail() {

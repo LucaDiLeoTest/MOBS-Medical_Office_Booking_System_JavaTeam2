@@ -1,9 +1,13 @@
 package co.gruppo2.mobs.services;
 
-import co.gruppo2.mobs.DTO.BookingDTO;
+import co.gruppo2.mobs.DTO.CreationBookingDTO;
 import co.gruppo2.mobs.entities.Booking;
+import co.gruppo2.mobs.entities.Doctor;
+import co.gruppo2.mobs.entities.Patient;
 import co.gruppo2.mobs.enumerations.BookingStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
+import co.gruppo2.mobs.repositories.IDoctorRepository;
+import co.gruppo2.mobs.repositories.IPatientRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +20,30 @@ public class BookingService {
     @Autowired
     private IBookingRepository iBookingRepository;
 
+    @Autowired
+    private IDoctorRepository iDoctorRepository;
+
+    @Autowired
+    private IPatientRepository iPatientRepository;
+
     /**
      * This method insert a new Booking in the table
-     * @param bookingDTO
+     * @param creationBookingDTO
      * @return
      */
-    public Booking createBooking(BookingDTO bookingDTO) {
+    public String createBooking(CreationBookingDTO creationBookingDTO) {
         Booking booking = new Booking();
-        booking.setStartingTime(bookingDTO.getStartingTime());
+        booking.setStartingTime(creationBookingDTO.getStartingTime());
+        booking.setDate(creationBookingDTO.getDate());
         booking.setBookingStatusEnum(BookingStatusEnum.PENDING);
-        return iBookingRepository.save(booking);
+        Doctor doctor = iDoctorRepository.findById(creationBookingDTO.getDoctorId()).
+                orElseThrow(()-> new EntityNotFoundException("Entity not found"));
+        Patient patient = iPatientRepository.findById(creationBookingDTO.getPatientId())
+                .orElseThrow(()-> new EntityNotFoundException("Entity not found"));
+        booking.setDoctor(doctor);
+        booking.setPatient(patient);
+        iBookingRepository.save(booking);
+        return "Congratulation, the booking has been created successfully!";
     }
     /**
      * This method return the required booking found using its unique id_booking
@@ -56,7 +74,7 @@ public class BookingService {
         Booking existingBooking = getBookingById(id);
         existingBooking.setStartingTime(booking.getStartingTime());
         existingBooking.setBookingStatusEnum(booking.getBookingStatusEnum());
-        existingBooking.setDoctor1(booking.getDoctor1());
+        existingBooking.setDoctor(booking.getDoctor());
         existingBooking.setPatient(booking.getPatient());
         return iBookingRepository.save(existingBooking);
     }
@@ -67,7 +85,7 @@ public class BookingService {
      */
     public Booking logicalDeleteBooking(long id){
         Booking logicalDeleteBooking = getBookingById(id);
-        logicalDeleteBooking.setBookingStatusEnum(BookingStatusEnum.DELETED);
+        logicalDeleteBooking.setBookingStatusEnum(BookingStatusEnum.EXPIRED);
         iBookingRepository.save(logicalDeleteBooking);
         System.out.println("The booking " + id + " has been deleted!");
         return logicalDeleteBooking;

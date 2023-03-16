@@ -1,15 +1,9 @@
 spring:
 
   datasource:
-<<<<<<< HEAD
     url: jdbc:mysql://localhost:3306/newdb
     username: root
     password: focamonaca
-=======
-    url: jdbc:mysql://localhost:3306/antonio_prova
-    username: root
-    password: password
->>>>>>> 1184b207b1713d27ed4dd283d6c9c1ebae36e4dc
 
   jpa:
     database: mysql

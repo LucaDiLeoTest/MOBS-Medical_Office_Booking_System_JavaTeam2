@@ -1,12 +1,16 @@
 package co.gruppo2.mobs.entities;
 
 import co.gruppo2.mobs.enumerations.BookingStatusEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "booking")
+@JsonIgnoreProperties({ "hibernateLazyInitializer","handler" })
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,22 +18,28 @@ public class Booking {
     private Long id;
 
     @Column(name = "booking_start_time")
-    private LocalDateTime startingTime;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private LocalTime startingTime;
 
     @Column(name = "booking_end_time")
-    private LocalDateTime endingTime;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
+    private LocalTime endingTime;
+
+    @Column(name="date_booking")
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "booking_status")
     private BookingStatusEnum bookingStatusEnum;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Doctor doctor1;
+    @JoinColumn(name="fk_doctor")
+    private Doctor doctor;
 
     /*@ManyToOne(fetch = FetchType.LAZY)
     private ReceptionistEntity receptionist;*/
-
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="fk_patient")
     private Patient patient;
 
     /**
@@ -42,16 +52,17 @@ public class Booking {
      * All args constructor
      * @param startingTime
      * @param endingTime
+     * @param date
      * @param bookingStatusEnum
-     * @param doctor1
+     * @param doctor
      * @param patient
      */
-    public Booking(LocalDateTime startingTime,LocalDateTime endingTime,BookingStatusEnum bookingStatusEnum,
-                   Doctor doctor1,Patient patient){
+    public Booking(LocalTime startingTime, LocalTime endingTime, LocalDate date, BookingStatusEnum bookingStatusEnum, Doctor doctor, Patient patient) {
         this.startingTime = startingTime;
         this.endingTime = endingTime;
+        this.date = date;
         this.bookingStatusEnum = bookingStatusEnum;
-        this.doctor1 = doctor1;
+        this.doctor = doctor;
         this.patient = patient;
     }
 
@@ -60,17 +71,25 @@ public class Booking {
         return id;
     }
 
-    public LocalDateTime getStartingTime() {
+    public LocalTime getStartingTime() {
         return startingTime;
     }
 
-    public void setStartingTime(LocalDateTime startingTime) {
+    public void setStartingTime(LocalTime startingTime) {
         this.startingTime = startingTime;
         this.endingTime = startingTime.plusMinutes(30);                 //set the endingTime with a delay of 30 min
     }
 
-    public LocalDateTime getEndingTime() {
+    public LocalTime getEndingTime() {
         return endingTime;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public BookingStatusEnum getBookingStatusEnum() {
@@ -81,12 +100,12 @@ public class Booking {
         this.bookingStatusEnum = bookingStatusEnum;
     }
 
-    public Doctor getDoctor1() {
-        return doctor1;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctor1(Doctor doctor1) {
-        this.doctor1 = doctor1;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public Patient getPatient() {

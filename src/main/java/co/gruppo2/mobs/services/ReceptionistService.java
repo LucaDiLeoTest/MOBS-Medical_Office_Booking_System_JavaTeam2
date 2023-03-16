@@ -1,5 +1,6 @@
 package co.gruppo2.mobs.services;
 
+import co.gruppo2.mobs.DTO.ReceptionistDTO;
 import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
@@ -28,7 +29,12 @@ public class ReceptionistService{
      * @param receptionist The DTO containing the receptionist's data
      * @return The saved receptionist DTO
      */
-    public Receptionist createAndSaveReceptionist(Receptionist receptionist){
+    public Receptionist createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
+        Receptionist receptionist =new Receptionist();
+        receptionist.setName(receptionistDTO.getName());
+        receptionist.setSurname(receptionistDTO.getSurname());
+        receptionist.setFiscalCode(receptionistDTO.getFiscalCode());
+        receptionist.setEmail(receptionistDTO.getEmail());
         receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
        return receptionistRepository.save(receptionist);
     }

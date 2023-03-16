@@ -1,5 +1,6 @@
 package co.gruppo2.mobs.controllers;
 
+import co.gruppo2.mobs.DTO.ReceptionistDTO;
 import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.services.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class ReceptionistController {
 
 
     @PostMapping("/")
-    public Receptionist create(@RequestBody Receptionist receptionist) {
+    public Receptionist create(@RequestBody ReceptionistDTO receptionistDTO) {
 
-        receptionistService.createAndSaveReceptionist(receptionist);
+       Receptionist receptionist = receptionistService.createAndSaveReceptionist(receptionistDTO);
         return receptionist;
 
     }

@@ -17,9 +17,10 @@ public class Doctor extends Person {
     private List<Patient> patients;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_receptionist")
     private Receptionist receptionist;
 
-    @OneToMany(mappedBy = "doctor1", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
     /**
@@ -39,8 +40,8 @@ public class Doctor extends Person {
      * @param receptionist
      * @param bookings
      */
-    public Doctor(String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum, List<Patient> patients, Receptionist receptionist, List<Booking> bookings) {
-        super(name, surname, email, telephoneNumber, personStatusEnum);
+    public Doctor(String name, String surname,String fiscalCode, String email, String telephoneNumber, PersonStatusEnum personStatusEnum, List<Patient> patients, Receptionist receptionist, List<Booking> bookings) {
+        super(name, surname, fiscalCode, email, telephoneNumber, personStatusEnum);
         this.patients = patients;
         this.receptionist = receptionist;
         this.bookings = bookings;

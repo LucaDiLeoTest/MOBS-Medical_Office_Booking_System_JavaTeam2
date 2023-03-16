@@ -6,6 +6,7 @@ import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IPatientRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +54,7 @@ public class PatientService{
             throw new Exception("Patient not found with email: "+email);
         } else {
             Patient patient = patientOptional.get();
-            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
                     patient.getTelephoneNumber());
         }
     }
@@ -71,7 +72,7 @@ public class PatientService{
             throw new NullPointerException("Patient not found with id: "+id);
         } else {
             Patient patient = patientOptional.get();
-            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
                     patient.getTelephoneNumber());
         }
     }
@@ -87,7 +88,7 @@ public class PatientService{
         List<Patient> patients = patientRepository.findByNameAndSurname(name,surname);
         List<PatientDTO> patientsDTO = new ArrayList<>();
         for(Patient patient : patients){
-            patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+            patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
                     patient.getTelephoneNumber()));
         }
         return patientsDTO;//TODO Fix this problem for inactive patient

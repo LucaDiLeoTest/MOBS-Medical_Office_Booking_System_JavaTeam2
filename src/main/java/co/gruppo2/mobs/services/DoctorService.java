@@ -30,10 +30,11 @@ public class DoctorService {
         Doctor doctor = new Doctor();
         doctor.setName(doctorDTO.getName());
         doctor.setSurname(doctorDTO.getSurname());
+        doctor.setFiscalCode(doctorDTO.getFiscalCode());
         doctor.setEmail(doctorDTO.getEmail());
         doctor.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
         doctorRepository.save(doctor);
-        return new DoctorDTO(doctor.getId(), doctorDTO.getName(), doctorDTO.getSurname(), doctor.getEmail());
+        return new DoctorDTO(doctor.getId(), doctorDTO.getName(), doctorDTO.getSurname(), doctor.getFiscalCode(), doctor.getEmail());
     }
 
     /**
@@ -63,6 +64,7 @@ public class DoctorService {
         Doctor doctor = getDoctorById(id);
         doctor.setName(doctorDTO.getName());
         doctor.setSurname(doctorDTO.getSurname());
+        doctor.setFiscalCode(doctorDTO.getFiscalCode());
         doctor.setEmail(doctorDTO.getEmail());
         doctorRepository.save(doctor);
         return doctorDTO;

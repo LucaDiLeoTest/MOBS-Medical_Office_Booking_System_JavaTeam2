@@ -38,8 +38,8 @@ public class Receptionist extends Person {
      * @param personStatusEnum
      * @param doctorList
      */
-    public Receptionist(String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum, List<Doctor> doctorList) {
-        super(name, surname, email, telephoneNumber, personStatusEnum);
+    public Receptionist(String name, String surname, String fiscalCode, String email, String telephoneNumber, PersonStatusEnum personStatusEnum, List<Doctor> doctorList) {
+        super(name, surname,fiscalCode, email, telephoneNumber, personStatusEnum);
         this.doctorList = doctorList;
     }
 
