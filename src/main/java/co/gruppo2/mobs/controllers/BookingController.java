@@ -2,6 +2,7 @@ package co.gruppo2.mobs.controllers;
 
 
 import co.gruppo2.mobs.DTO.CreationBookingDTO;
+import co.gruppo2.mobs.DTO.UpdateBookingDTO;
 import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class BookingController {
         return "You are in the booking controller!";
     }
 
+    /**
+     * This endpoint return a list of all the confirmed bookings
+     * @return
+     */
     @GetMapping("/all")
     public List<Booking> getAllBooking(){
         return bookingService.getAllBooking();}
@@ -39,8 +44,9 @@ public class BookingController {
     }
 
     @PutMapping("/{id}")
-    public Booking updateBooking(@PathVariable Long id, @RequestBody Booking booking) {
-        return bookingService.updateBooking(id, booking);
+    public ResponseEntity<String> updateBooking(@PathVariable Long id, @RequestBody UpdateBookingDTO updateBookingDTO) {
+        String body= bookingService.updateBooking(id, updateBookingDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(body);
     }
 
     @DeleteMapping("/{id}")

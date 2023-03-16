@@ -10,9 +10,19 @@ public class CreationBookingDTO {
     private Long patientId;
     private Long doctorId;
 
+    /**
+     * No args constructor
+     */
     public CreationBookingDTO() {
     }
 
+    /**
+     * All args constructor
+     * @param startingTime
+     * @param date
+     * @param patientId
+     * @param doctorId
+     */
     public CreationBookingDTO(LocalTime startingTime, LocalDate date, Long patientId, Long doctorId) {
         this.startingTime = startingTime;
         this.date = date;
@@ -20,6 +30,7 @@ public class CreationBookingDTO {
         this.doctorId = doctorId;
     }
 
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
     public LocalTime getStartingTime() {
         return startingTime;
     }

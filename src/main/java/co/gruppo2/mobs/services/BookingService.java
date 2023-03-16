@@ -1,6 +1,7 @@
 package co.gruppo2.mobs.services;
 
 import co.gruppo2.mobs.DTO.CreationBookingDTO;
+import co.gruppo2.mobs.DTO.UpdateBookingDTO;
 import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.entities.Doctor;
 import co.gruppo2.mobs.entities.Patient;
@@ -43,7 +44,7 @@ public class BookingService {
         booking.setDoctor(doctor);
         booking.setPatient(patient);
         iBookingRepository.save(booking);
-        return "Congratulation, the booking has been created successfully!";
+        return "Congratulation your booking has been created successfully!";
     }
     /**
      * This method return the required booking found using its unique id_booking
@@ -60,23 +61,24 @@ public class BookingService {
      * @return
      */
     public List<Booking> getAllBooking(){
-        return iBookingRepository.findAll();
+        return iBookingRepository.findByBookingStatusEnum(BookingStatusEnum.CONFIRMED);
     }
 
 
     /**
      * This method consent to update an existing booking
      * @param id
-     * @param booking
+     * @param updateBookingDTO
      * @return
      */
-    public Booking updateBooking(Long id, Booking booking) {
-        Booking existingBooking = getBookingById(id);
-        existingBooking.setStartingTime(booking.getStartingTime());
-        existingBooking.setBookingStatusEnum(booking.getBookingStatusEnum());
-        existingBooking.setDoctor(booking.getDoctor());
-        existingBooking.setPatient(booking.getPatient());
-        return iBookingRepository.save(existingBooking);
+    public String updateBooking(Long id, UpdateBookingDTO updateBookingDTO) {
+        Booking booking = getBookingById(id);
+        if(updateBookingDTO.getStartingTime() != null){booking.setStartingTime(updateBookingDTO.getStartingTime());}
+        if(updateBookingDTO.getEndingTime() != null){booking.setEndingTime(updateBookingDTO.getEndingTime());}
+        if(updateBookingDTO.getDate() != null){booking.setDate(updateBookingDTO.getDate());}
+        if(updateBookingDTO.getBookingStatusEnum() != null){booking.setBookingStatusEnum(updateBookingDTO.getBookingStatusEnum());}
+        iBookingRepository.save(booking);
+        return "Your booking  has been update successfully!";
     }
 
     /**

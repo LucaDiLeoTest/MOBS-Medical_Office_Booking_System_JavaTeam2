@@ -42,6 +42,7 @@ public class Booking {
     @JoinColumn(name="fk_patient")
     private Patient patient;
 
+
     /**
      * No args constructor
      */
@@ -77,11 +78,15 @@ public class Booking {
 
     public void setStartingTime(LocalTime startingTime) {
         this.startingTime = startingTime;
-        this.endingTime = startingTime.plusMinutes(30);                 //set the endingTime with a delay of 30 min
+        this.endingTime = startingTime.plusMinutes(30);          //set the endingTime with a delay of 30 min
     }
 
     public LocalTime getEndingTime() {
         return endingTime;
+    }
+
+    public void setEndingTime(LocalTime endingTime) {
+        this.endingTime = endingTime;
     }
 
     public LocalDate getDate() {
