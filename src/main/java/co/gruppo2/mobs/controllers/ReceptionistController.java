@@ -4,6 +4,7 @@ import co.gruppo2.mobs.DTO.ReceptionistDTO;
 import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.services.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class ReceptionistController {
 
 
     @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public Receptionist create(@RequestBody ReceptionistDTO receptionistDTO) {
 
        Receptionist receptionist = receptionistService.createAndSaveReceptionist(receptionistDTO);

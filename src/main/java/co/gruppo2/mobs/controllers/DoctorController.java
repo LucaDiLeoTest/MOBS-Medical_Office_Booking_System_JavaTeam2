@@ -5,6 +5,7 @@ import co.gruppo2.mobs.DTO.DoctorDTO;
 import co.gruppo2.mobs.entities.Doctor;
 import co.gruppo2.mobs.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class DoctorController {
     }
 
     @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public DoctorDTO createDoctor(@RequestBody DoctorDTO doctorDTO){
         return doctorService.createDoctor(doctorDTO);
     }

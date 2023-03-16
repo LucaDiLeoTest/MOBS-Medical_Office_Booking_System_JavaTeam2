@@ -34,6 +34,7 @@ public class BookingController {
     }
 
     @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> createBooking(@RequestBody CreationBookingDTO creationBookingDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createBooking(creationBookingDTO));
     }
