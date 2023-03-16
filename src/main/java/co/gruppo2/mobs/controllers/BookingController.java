@@ -1,7 +1,6 @@
 package co.gruppo2.mobs.controllers;
 
 
-import co.gruppo2.mobs.DTO.BookingDTO;
 import co.gruppo2.mobs.DTO.CreationBookingDTO;
 import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.services.BookingService;
