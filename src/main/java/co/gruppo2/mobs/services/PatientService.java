@@ -49,11 +49,11 @@ public class PatientService{
      */
     public PatientDTO findPatientByEmail(String email) throws Exception{
         Optional<Patient> patientOptional = patientRepository.findByEmail(email);
-        if(!patientOptional.isPresent()){
+        if(!patientOptional.isPresent()|| (patientOptional.get().getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE))){
             throw new Exception("Patient not found with email: "+email);
         } else {
             Patient patient = patientOptional.get();
-            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
                     patient.getTelephoneNumber());
         }
     }
@@ -67,11 +67,11 @@ public class PatientService{
      */
     public PatientDTO findPatientById(Long id){
         Optional<Patient> patientOptional = patientRepository.findById(id);
-        if(!patientOptional.isPresent()){
+        if(!patientOptional.isPresent() || (patientOptional.get().getPersonStatusEnum().equals(PersonStatusEnum.INACTIVE))){
             throw new NullPointerException("Patient not found with id: "+id);
         } else {
             Patient patient = patientOptional.get();
-            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+            return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
                     patient.getTelephoneNumber());
         }
     }
@@ -83,15 +83,39 @@ public class PatientService{
      * @param surname the surname of the patients to find
      * @return a List of PatientDTO objects representing the found patients
      */
-    public List<PatientDTO> findPatientsByNameSurname(String name,String surname){
+    @Deprecated
+    public List<PatientDTO> findPatientsByNameSurnameOld(String name,String surname){
         List<Patient> patients = patientRepository.findByNameAndSurname(name,surname);
         List<PatientDTO> patientsDTO = new ArrayList<>();
         for(Patient patient : patients){
-            patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getEmail(),
+            patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
                     patient.getTelephoneNumber()));
         }
         return patientsDTO;
     }
+
+    /**
+
+     This method finds all active patients that match the given name and surname
+     @param name the name of the patient to be searched
+     @param surname the surname of the patient to be searched
+     @return a List of PatientDTO objects representing the active patients that match the given name and surname
+     */
+    public List<PatientDTO> findPatientsByNameSurname(String name,String surname){
+        List<PatientDTO> patientsDTO = new ArrayList<>();
+        Optional<List<Patient>> patients = Optional.ofNullable(patientRepository.findByNameAndSurname(name,surname));
+        patients.ifPresent(patientList -> {
+            for(Patient patient : patientList){
+                if(patient.getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE)){
+                    patientsDTO.add(
+                            new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),
+                                    patient.getFiscalCode(), patient.getEmail(), patient.getTelephoneNumber()));
+                }
+            }
+        });
+        return patientsDTO;
+    }
+
 
     /**
      * Sets the status of a patient with the provided ID to INACTIVE in the patientRepository.

@@ -1,16 +1,13 @@
 package co.gruppo2.mobs.services;
 
 import co.gruppo2.mobs.DTO.ReceptionistDTO;
-import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.entities.Receptionist;
-import co.gruppo2.mobs.enumerations.BookingStatusEnum;
 import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
 import co.gruppo2.mobs.repositories.IReceptionistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,10 +26,16 @@ public class ReceptionistService{
     /**
      * Creates and saves a new receptionist entity with the given receptionistDTO
      *
-     * @param receptionist The DTO containing the receptionist's data
+     * @param receptionistDTO The DTO containing the receptionist's data
      * @return The saved receptionist DTO
      */
-    public Receptionist createAndSaveReceptionist(Receptionist receptionist){
+    public Receptionist createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
+        Receptionist receptionist =new Receptionist();
+        receptionist.setName(receptionistDTO.getName());
+        receptionist.setSurname(receptionistDTO.getSurname());
+        receptionist.setFiscalCode(receptionistDTO.getFiscalCode());
+        receptionist.setEmail(receptionistDTO.getEmail());
+        receptionist.setTelephoneNumber(receptionistDTO.getTelephoneNumber());
         receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
        return receptionistRepository.save(receptionist);
     }
@@ -73,7 +76,6 @@ public class ReceptionistService{
             receptionist = receptionistRepository.getById(id);
             receptionist.setEmail(email);
             receptionist.setTelephoneNumber(contact);
-            receptionist.setWorkplace(workPlace);
             return receptionistRepository.save(receptionist);
         } else {
             receptionist = new Receptionist();

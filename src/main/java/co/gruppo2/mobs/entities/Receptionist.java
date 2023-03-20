@@ -3,46 +3,58 @@ package co.gruppo2.mobs.entities;
 import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "receptionist")
+@Table(name = "receptionists")
 public class Receptionist extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_receptionist")
     private Long id;
 
-    @Column(name = "workplace_receptionist")
-    private String workplace;
     /*@OneToMany(mappedBy = "receptionist", cascade = CascadeType.ALL)
     private List<Patient> patients;*/
 
-    @OneToOne( cascade = CascadeType.ALL)
-    private Doctor doctor2;
+
+    @OneToMany(mappedBy = "receptionist",cascade = CascadeType.ALL)
+    private List<Doctor> doctorList;
 
     /*@OneToMany(mappedBy = "receptionist",cascade = CascadeType.ALL)
     private List<Booking> bookings;*/
 
+    /**
+     * No args constructor
+     */
     public Receptionist(){
     }
 
-    public Receptionist(Long id, String name, String surname, String email, String telephoneNumber, String workplace, PersonStatusEnum personStatusEnum){
-        super(id,name,surname,email,telephoneNumber, personStatusEnum);
-        this.workplace = workplace;
+    /**
+     * All args constructor
+     * @param name
+     * @param surname
+     * @param email
+     * @param telephoneNumber
+     * @param personStatusEnum
+     * @param doctorList
+     */
+    public Receptionist(String name, String surname, String fiscalCode, String email, String telephoneNumber, PersonStatusEnum personStatusEnum, List<Doctor> doctorList) {
+        super(name, surname,fiscalCode, email, telephoneNumber, personStatusEnum);
+        this.doctorList = doctorList;
     }
 
-    public Long getId(){
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id){
-        this.id = id;
+    public List<Doctor> getDoctorList() {
+        return doctorList;
     }
 
-    public String getWorkplace() {
-        return workplace;
-    }
-
-    public void setWorkplace(String workplace) {
-        this.workplace = workplace;
+    public void setDoctorList(List<Doctor> doctorList) {
+        this.doctorList = doctorList;
     }
 }

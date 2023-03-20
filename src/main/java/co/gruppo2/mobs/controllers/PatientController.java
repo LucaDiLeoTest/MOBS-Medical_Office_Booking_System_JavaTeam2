@@ -17,8 +17,9 @@ public class PatientController{
     private PatientService patientService;
 
 
-    @PostMapping("/")
-    public ResponseEntity<PatientDTO> createPatientDTO(@RequestBody  PatientDTO patientDTO)
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<PatientDTO> createPatientDTO(@RequestBody PatientDTO patientDTO)
             throws JsonProcessingException{
         PatientDTO savedPatient = patientService.createPatient(patientDTO);
         return new ResponseEntity<>(savedPatient,HttpStatus.CREATED);

@@ -5,32 +5,45 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "surname")
     private String surname;
-    @Column()
+    @Column(name = "fiscal_code", nullable = false, unique = true)
+    private String fiscalCode;
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @Column()
+    @Column(name = "telephone_number",unique = true)
     private String telephoneNumber;
     @Enumerated(EnumType.STRING)
+    @Column(name = "record_status")
     private PersonStatusEnum personStatusEnum;
 
-
+    /**
+     * No args constructor
+     */
     public Person() {
     }
 
-    public Person(Long id, String name, String surname, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
-        this.id = id;
+    /**
+     * All args constructor
+     * @param name
+     * @param surname
+     * @param fiscalCode
+     * @param email
+     * @param telephoneNumber
+     * @param personStatusEnum
+     */
+    public Person(String name, String surname, String fiscalCode, String email, String telephoneNumber, PersonStatusEnum personStatusEnum) {
         this.name = name;
         this.surname = surname;
+        this.fiscalCode = fiscalCode;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
         this.personStatusEnum = personStatusEnum;
     }
 
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
     public String getName() {
         return name;
     }
@@ -47,6 +60,14 @@ public abstract class Person {
         this.surname = surname;
     }
 
+    public String getFiscalCode() {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode(String fiscalCode) {
+        this.fiscalCode = fiscalCode;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -55,19 +76,19 @@ public abstract class Person {
         this.email = email;
     }
 
-    public String getTelephoneNumber(){
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(String telephoneNumber){
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public PersonStatusEnum getPersonStatusEnum(){
+    public PersonStatusEnum getPersonStatusEnum() {
         return personStatusEnum;
     }
 
-    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum){
+    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum) {
         this.personStatusEnum = personStatusEnum;
     }
 }

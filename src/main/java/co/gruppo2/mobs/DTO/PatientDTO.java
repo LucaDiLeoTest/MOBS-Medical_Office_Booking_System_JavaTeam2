@@ -1,7 +1,7 @@
 package co.gruppo2.mobs.DTO;
 
 
-import co.gruppo2.mobs.entities.Receptionist;
+
 
 public class PatientDTO{
     private Long id;
@@ -12,15 +12,18 @@ public class PatientDTO{
 
     private String email;
 
+    private String fiscalCode;
+
     private String telephoneNumber;
 
-    private Receptionist receptionist;
 
-    public PatientDTO(Long id,String name,String surname,String email,String telephoneNumber){
+
+    public PatientDTO(Long id,String name,String surname, String fiscalCode, String email,String telephoneNumber){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.fiscalCode=fiscalCode;
         this.telephoneNumber = telephoneNumber;
     }
 
@@ -46,6 +49,14 @@ public class PatientDTO{
 
     public void setSurname(String surname){
         this.surname = surname;
+    }
+
+    public String getFiscalCode() {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode(String fiscalCode) {
+        this.fiscalCode = fiscalCode;
     }
 
     public String getEmail(){
