@@ -11,20 +11,34 @@ public class ReceptionistDTO {
     private String fiscalCode;
 
     private String email;
+    private String telephoneNumber;
 
 
-
+    /**
+     * No args constructor
+     */
     public ReceptionistDTO() {
     }
 
-    public ReceptionistDTO(Long id,String name,String surname, String fiscalCode, String email){
+    /**
+     * All args constructor
+     * @param id
+     * @param name
+     * @param surname
+     * @param fiscalCode
+     * @param email
+     * @param telephoneNumber
+     */
+    public ReceptionistDTO(Long id,String name,String surname, String fiscalCode, String email, String telephoneNumber){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.fiscalCode=fiscalCode;
         this.email = email;
+        this.telephoneNumber=telephoneNumber;
     }
 
+    //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
     public Long getId() {
         return id;
     }
@@ -65,4 +79,11 @@ public class ReceptionistDTO {
         this.email = email;
     }
 
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
 }

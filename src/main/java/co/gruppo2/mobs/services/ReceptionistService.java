@@ -26,7 +26,7 @@ public class ReceptionistService{
     /**
      * Creates and saves a new receptionist entity with the given receptionistDTO
      *
-     * @param receptionist The DTO containing the receptionist's data
+     * @param receptionistDTO The DTO containing the receptionist's data
      * @return The saved receptionist DTO
      */
     public Receptionist createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
@@ -35,6 +35,7 @@ public class ReceptionistService{
         receptionist.setSurname(receptionistDTO.getSurname());
         receptionist.setFiscalCode(receptionistDTO.getFiscalCode());
         receptionist.setEmail(receptionistDTO.getEmail());
+        receptionist.setTelephoneNumber(receptionistDTO.getTelephoneNumber());
         receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
        return receptionistRepository.save(receptionist);
     }

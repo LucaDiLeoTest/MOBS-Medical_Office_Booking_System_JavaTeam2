@@ -34,7 +34,7 @@ public class DoctorService {
         doctor.setEmail(doctorDTO.getEmail());
         doctor.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
         doctorRepository.save(doctor);
-        return new DoctorDTO(doctor.getId(), doctorDTO.getName(), doctorDTO.getSurname(), doctor.getFiscalCode(), doctor.getEmail());
+        return new DoctorDTO(doctor.getId(), doctor.getName(), doctor.getSurname(), doctor.getFiscalCode(), doctor.getEmail());
     }
 
     /**
