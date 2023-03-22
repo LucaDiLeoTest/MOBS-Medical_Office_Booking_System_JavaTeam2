@@ -5,11 +5,13 @@ import co.gruppo2.mobs.entities.Receptionist;
 import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 import co.gruppo2.mobs.repositories.IBookingRepository;
 import co.gruppo2.mobs.repositories.IReceptionistRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ReceptionistService{
@@ -29,15 +31,19 @@ public class ReceptionistService{
      * @param receptionistDTO The DTO containing the receptionist's data
      * @return The saved receptionist DTO
      */
-    public Receptionist createAndSaveReceptionist(ReceptionistDTO receptionistDTO){
-        Receptionist receptionist =new Receptionist();
+    public ReceptionistDTO createReceptionist(ReceptionistDTO receptionistDTO){
+        Receptionist receptionist = new Receptionist();
         receptionist.setName(receptionistDTO.getName());
         receptionist.setSurname(receptionistDTO.getSurname());
         receptionist.setFiscalCode(receptionistDTO.getFiscalCode());
         receptionist.setEmail(receptionistDTO.getEmail());
         receptionist.setTelephoneNumber(receptionistDTO.getTelephoneNumber());
         receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
-       return receptionistRepository.save(receptionist);
+
+        receptionistRepository.save(receptionist);
+
+        return new ReceptionistDTO(receptionist.getId(), receptionist.getName(),receptionist.getSurname(), receptionist.getFiscalCode(),
+                                    receptionist.getEmail(), receptionist.getTelephoneNumber(), receptionist.getPersonStatusEnum());
     }
 
     /**
@@ -47,18 +53,71 @@ public class ReceptionistService{
      */
 
 
-    public Optional<Receptionist> getOne(Long id){
-      return receptionistRepository.findById(id);
+    public ReceptionistDTO getReceptionistByID(Long id) {
+        Optional<Receptionist> receptionist = receptionistRepository.findById(id);
+        if (receptionist.isPresent()) {
+
+            Receptionist r = receptionist.get();
+
+            if (r.getPersonStatusEnum() == PersonStatusEnum.INACTIVE){
+                throw new EntityNotFoundException("Receptionist with id " + id + " is inactive");
+            }
+
+            return new ReceptionistDTO(
+                    receptionist.get().getId(),
+                    receptionist.get().getName(),
+                    receptionist.get().getSurname(),
+                    receptionist.get().getFiscalCode(),
+                    receptionist.get().getEmail(),
+                    receptionist.get().getTelephoneNumber(),
+                    receptionist.get().getPersonStatusEnum()
+            );
+
+        } else {
+            throw new EntityNotFoundException("Receptionist not found with id " + id);
+        }
+
     }
+
 
     /**
      * Retrieves all receptionist entities
      *
      * @return A list containing all receptionist entities
      */
-    public List<Receptionist> getAllReceptionist(){
-        return receptionistRepository.findAll();
+    public List<ReceptionistDTO> getAllReceptionistActive(){
+
+        List<Receptionist> receptionists = receptionistRepository.findByPersonStatusEnum(PersonStatusEnum.ACTIVE);
+        List<ReceptionistDTO> receptionistDTOs = receptionists.stream()
+                .map(receptionist -> new ReceptionistDTO(
+                        receptionist.getId(),
+                        receptionist.getName(),
+                        receptionist.getSurname(),
+                        receptionist.getFiscalCode(),
+                        receptionist.getEmail(),
+                        receptionist.getTelephoneNumber(),
+                        receptionist.getPersonStatusEnum()))
+                .collect(Collectors.toList());
+        return receptionistDTOs;
     }
+
+    public List<ReceptionistDTO> getAllReceptionistDeleted(){
+
+        List<Receptionist> receptionists = receptionistRepository.findByPersonStatusEnum(PersonStatusEnum.INACTIVE);
+        List<ReceptionistDTO> receptionistDTOs = receptionists.stream()
+                .map(receptionist -> new ReceptionistDTO(
+                        receptionist.getId(),
+                        receptionist.getName(),
+                        receptionist.getSurname(),
+                        receptionist.getFiscalCode(),
+                        receptionist.getEmail(),
+                        receptionist.getTelephoneNumber(),
+                        receptionist.getPersonStatusEnum()))
+                .collect(Collectors.toList());
+        return receptionistDTOs;
+    }
+
+
 
 
     /**
@@ -89,20 +148,55 @@ public class ReceptionistService{
      *
      * @param id The id of the receptionist to delete
      */
-    public Receptionist logicalDelete(Long id) {
-        Receptionist receptionist;
-        if (receptionistRepository.existsById(id)) {
-            receptionist = receptionistRepository.getById(id);
-            receptionist.setPersonStatusEnum(PersonStatusEnum.INACTIVE);
-            return receptionistRepository.save(receptionist);
-        } else {
-            receptionist = new Receptionist();
+    public ReceptionistDTO logicalDelete(Long id){
+        Receptionist receptionist = receptionistRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Secretary not found with id " + id));
+
+        receptionist.setPersonStatusEnum(PersonStatusEnum.INACTIVE);
+        Receptionist receptionistDeleted = receptionistRepository.save(receptionist);
+
+        ReceptionistDTO receptionistDTO = new ReceptionistDTO();
+        receptionistDTO.setId(receptionistDeleted.getId());
+        receptionistDTO.setName(receptionistDeleted.getName());
+        receptionistDTO.setSurname(receptionistDeleted.getSurname());
+        receptionistDTO.setEmail(receptionistDeleted.getEmail());
+        receptionistDTO.setTelephoneNumber(receptionistDeleted.getTelephoneNumber());
+        receptionistDTO.setFiscalCode(receptionistDeleted.getFiscalCode());
+        receptionistDTO.setPersonStatusEnum(receptionistDeleted.getPersonStatusEnum());
+
+        return receptionistDTO;
+
+    }
+
+
+
+    public ReceptionistDTO restoreReceptionist(Long id) throws Exception {
+        Receptionist receptionist = receptionistRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Secretary not found with id " + id));
+
+        if (receptionist.getPersonStatusEnum() == PersonStatusEnum.INACTIVE){
+            receptionist.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
+        } else if (receptionist.getPersonStatusEnum() == PersonStatusEnum.ACTIVE) {
+            throw new Exception("the secretary is already active");
         }
 
-        return receptionist;
+        Receptionist receptionistDeleted = receptionistRepository.save(receptionist);
+
+        ReceptionistDTO receptionistDTO = new ReceptionistDTO();
+        receptionistDTO.setId(receptionistDeleted.getId());
+        receptionistDTO.setName(receptionistDeleted.getName());
+        receptionistDTO.setSurname(receptionistDeleted.getSurname());
+        receptionistDTO.setEmail(receptionistDeleted.getEmail());
+        receptionistDTO.setTelephoneNumber(receptionistDeleted.getTelephoneNumber());
+        receptionistDTO.setFiscalCode(receptionistDeleted.getFiscalCode());
+        receptionistDTO.setPersonStatusEnum(receptionistDeleted.getPersonStatusEnum());
+
+        return receptionistDTO;
+
     }
 
 }
+
 
 
 

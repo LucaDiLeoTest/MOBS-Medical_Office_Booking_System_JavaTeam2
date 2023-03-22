@@ -1,5 +1,7 @@
 package co.gruppo2.mobs.DTO;
 
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
+
 public class ReceptionistDTO {
 
     private Long id;
@@ -12,6 +14,8 @@ public class ReceptionistDTO {
 
     private String email;
     private String telephoneNumber;
+
+    private PersonStatusEnum personStatusEnum;
 
 
     /**
@@ -29,13 +33,14 @@ public class ReceptionistDTO {
      * @param email
      * @param telephoneNumber
      */
-    public ReceptionistDTO(Long id,String name,String surname, String fiscalCode, String email, String telephoneNumber){
+    public ReceptionistDTO(Long id,String name,String surname, String fiscalCode, String email, String telephoneNumber, PersonStatusEnum personStatusEnum){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.fiscalCode=fiscalCode;
         this.email = email;
         this.telephoneNumber=telephoneNumber;
+        this.personStatusEnum = personStatusEnum;
     }
 
     //---------------------------------------------GETTER AND SETTER-------------------------------------------------//
@@ -85,5 +90,13 @@ public class ReceptionistDTO {
 
     public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public PersonStatusEnum getPersonStatusEnum() {
+        return personStatusEnum;
+    }
+
+    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum) {
+        this.personStatusEnum = personStatusEnum;
     }
 }
