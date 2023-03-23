@@ -14,6 +14,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,24 +81,57 @@ public class BookingService {
      * This method return the entire list of booking
      * @return
      */
-    public List<Booking> getAllBooking(){
-        return iBookingRepository.findAll();
+    public List<BookingResponseDTO> getAllBookings(){
+        List<Booking> bookings = iBookingRepository.findAll();
+
+        List<BookingResponseDTO> bookingsResponseDTO = new ArrayList<>();
+
+        for (Booking booking :bookings){
+            if(booking.getBookingStatusEnum().equals(BookingStatusEnum.CONFIRMED)){
+            bookingsResponseDTO.add(new BookingResponseDTO(booking.getId(), booking.getStartingTime(), booking.getEndingTime(),
+                    booking.getDate(), booking.getBookingStatusEnum(), booking.getDoctor().getName()+" "+
+                    booking.getDoctor().getSurname(), booking.getPatient().getName()+" "
+                    +booking.getPatient().getSurname(), booking.getPatient().getEmail(),
+                    booking.getPatient().getTelephoneNumber(), booking.getPatient().getFiscalCode()));
+            }
+        }
+        return bookingsResponseDTO;
     }
 
-/*    public List<Booking> getAllDailyBooking(){
-        List<Booking> dailyBookings = new ArrayList<>();
-        iBookingRepository.findAll().forEach(booking ->
-                if(booking.getBookingStatusEnum() == BookingStatusEnum.CONFIRMED))
-        return dailyBookings;
+
+    public List<BookingResponseDTO> getAllPendingBookings(){
+        List<Booking> bookings = iBookingRepository.findAll();
+
+        List<BookingResponseDTO> bookingsResponseDTO = new ArrayList<>();
+
+        for (Booking booking :bookings){
+            if(booking.getBookingStatusEnum().equals(BookingStatusEnum.PENDING)){
+                bookingsResponseDTO.add(new BookingResponseDTO(booking.getId(), booking.getStartingTime(), booking.getEndingTime(),
+                        booking.getDate(), booking.getBookingStatusEnum(), booking.getDoctor().getName()+" "+
+                        booking.getDoctor().getSurname(), booking.getPatient().getName()+" "
+                        +booking.getPatient().getSurname(), booking.getPatient().getEmail(),
+                        booking.getPatient().getTelephoneNumber(), booking.getPatient().getFiscalCode()));
+            }
+        }
+        return bookingsResponseDTO;
     }
-*/
-/*    public List<Booking> checkAllExpiredBookings(){
-        iBookingRepository.findAll();
-    //recupero prenotazioni < localdate.now()
-    //settare tutte le booking su expired
-        return ;
+
+    public List<BookingResponseDTO> getAllDeletedOrExpiredBookings(){
+        List<Booking> bookings = iBookingRepository.findAll();
+
+        List<BookingResponseDTO> bookingsResponseDTO = new ArrayList<>();
+
+        for (Booking booking :bookings){
+            if(booking.getBookingStatusEnum().equals(BookingStatusEnum.DELETED) || booking.getBookingStatusEnum().equals(BookingStatusEnum.EXPIRED)){
+                bookingsResponseDTO.add(new BookingResponseDTO(booking.getId(), booking.getStartingTime(), booking.getEndingTime(),
+                        booking.getDate(), booking.getBookingStatusEnum(), booking.getDoctor().getName()+" "+
+                        booking.getDoctor().getSurname(), booking.getPatient().getName()+" "
+                        +booking.getPatient().getSurname(), booking.getPatient().getEmail(),
+                        booking.getPatient().getTelephoneNumber(), booking.getPatient().getFiscalCode()));
+            }
+        }
+        return bookingsResponseDTO;
     }
-*/
 
     /**
      * This method consent to update an existing booking
@@ -139,6 +173,21 @@ public class BookingService {
         }
 
     }
+  //----------------------------------WORK IN PROGRESS---------------------------------------
+    /*    public List<Booking> getAllDailyBooking(){
+        List<Booking> dailyBookings = new ArrayList<>();
+        iBookingRepository.findAll().forEach(booking ->
+                if(booking.getBookingStatusEnum() == BookingStatusEnum.CONFIRMED))
+        return dailyBookings;
+    }
+*/
+/*    public List<Booking> checkAllExpiredBookings(){
+        iBookingRepository.findAll();
+    //recupero prenotazioni < localdate.now()
+    //settare tutte le booking su expired
+        return ;
+    }
+*/
 
 
 }

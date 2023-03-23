@@ -4,7 +4,6 @@ package co.gruppo2.mobs.controllers;
 import co.gruppo2.mobs.DTO.BookingResponseDTO;
 import co.gruppo2.mobs.DTO.CreationBookingDTO;
 import co.gruppo2.mobs.DTO.UpdateBookingDTO;
-import co.gruppo2.mobs.entities.Booking;
 import co.gruppo2.mobs.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,24 +24,19 @@ public class BookingController {
         return "You are in the booking controller!";
     }
 
-    /**
-     * This endpoint return a list of all the confirmed bookings
-     * @return
-     */
-    @GetMapping("/all")
-    public List<Booking> getAllBooking(){
-        return bookingService.getAllBooking();}
-
     @GetMapping("/{id}")
     public ResponseEntity<BookingResponseDTO> getBookingById(@PathVariable Long id){
         return ResponseEntity.ok().body(bookingService.getBookingById(id));
     }
 
-/*    @GetMapping("/alldailybookins")
-    public ResponseEntity<List<Booking>> getAllDailyBookings(){
-        return ResponseEntity.ok(bookingService.getAllDailyBooking());
-    }
-*/
+    /**
+     * This endpoint return a list of all the confirmed bookings
+     * @return
+     */
+    @GetMapping("/all")
+    public List<BookingResponseDTO> getAllBooking(){
+        return bookingService.getAllBookings();}
+
     @PostMapping("/")
     public ResponseEntity<BookingResponseDTO> createBooking(@RequestBody CreationBookingDTO creationBookingDTO){
         BookingResponseDTO bookingResponseDTO = bookingService.createBooking(creationBookingDTO);
