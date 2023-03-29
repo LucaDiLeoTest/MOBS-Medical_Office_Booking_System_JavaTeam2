@@ -14,6 +14,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -168,26 +169,28 @@ public class BookingService {
     public void logicalDeleteBooking(long id){
         Optional<Booking> booking = iBookingRepository.findById(id);
         if(booking.isPresent()){
-        booking.get().setBookingStatusEnum(BookingStatusEnum.EXPIRED);
+        booking.get().setBookingStatusEnum(BookingStatusEnum.DELETED);
         iBookingRepository.save(booking.get());
         }
 
     }
-  //----------------------------------WORK IN PROGRESS---------------------------------------
-    /*    public List<Booking> getAllDailyBooking(){
-        List<Booking> dailyBookings = new ArrayList<>();
-        iBookingRepository.findAll().forEach(booking ->
-                if(booking.getBookingStatusEnum() == BookingStatusEnum.CONFIRMED))
-        return dailyBookings;
+
+    public List<BookingResponseDTO> getAllDailyBooking(){
+            List<Booking> bookings = iBookingRepository.findAll();
+
+            List<BookingResponseDTO> bookingsResponseDTO = new ArrayList<>();
+
+            for (Booking booking :bookings){
+                if(booking.getDate().isEqual(LocalDate.now())){
+                    bookingsResponseDTO.add(new BookingResponseDTO(booking.getId(), booking.getStartingTime(), booking.getEndingTime(),
+                            booking.getDate(), booking.getBookingStatusEnum(), booking.getDoctor().getName()+" "+
+                            booking.getDoctor().getSurname(), booking.getPatient().getName()+" "
+                            +booking.getPatient().getSurname(), booking.getPatient().getEmail(),
+                            booking.getPatient().getTelephoneNumber(), booking.getPatient().getFiscalCode()));
+                }
+            }
+            return bookingsResponseDTO;
     }
-*/
-/*    public List<Booking> checkAllExpiredBookings(){
-        iBookingRepository.findAll();
-    //recupero prenotazioni < localdate.now()
-    //settare tutte le booking su expired
-        return ;
-    }
-*/
 
 
 }

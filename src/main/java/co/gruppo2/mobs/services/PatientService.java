@@ -36,6 +36,7 @@ public class PatientService{
         patient.setPersonStatusEnum(PersonStatusEnum.ACTIVE);
         patientRepository.save(patient);
         patientDTO.setId(patient.getId());
+        patientDTO.setPersonStatusEnum(patient.getPersonStatusEnum());
         return patientDTO;
     }
 
@@ -49,12 +50,12 @@ public class PatientService{
      */
     public PatientDTO findPatientByEmail(String email) throws Exception{
         Optional<Patient> patientOptional = patientRepository.findByEmail(email);
-        if(!patientOptional.isPresent()|| (patientOptional.get().getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE))){
+        if(!patientOptional.isPresent() || !(patientOptional.get().getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE))){
             throw new Exception("Patient not found with email: "+email);
         } else {
             Patient patient = patientOptional.get();
             return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
-                    patient.getTelephoneNumber());
+                    patient.getTelephoneNumber(),patient.getPersonStatusEnum());
         }
     }
 
@@ -72,7 +73,7 @@ public class PatientService{
         } else {
             Patient patient = patientOptional.get();
             return new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
-                    patient.getTelephoneNumber());
+                    patient.getTelephoneNumber(),patient.getPersonStatusEnum());
         }
     }
 
@@ -89,7 +90,7 @@ public class PatientService{
         List<PatientDTO> patientsDTO = new ArrayList<>();
         for(Patient patient : patients){
             patientsDTO.add(new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
-                    patient.getTelephoneNumber()));
+                    patient.getTelephoneNumber(),patient.getPersonStatusEnum()));
         }
         return patientsDTO;
     }
@@ -108,8 +109,8 @@ public class PatientService{
             for(Patient patient : patientList){
                 if(patient.getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE)){
                     patientsDTO.add(
-                            new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),
-                                    patient.getFiscalCode(), patient.getEmail(), patient.getTelephoneNumber()));
+                            new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
+                                    patient.getTelephoneNumber(),patient.getPersonStatusEnum()));
                 }
             }
         });

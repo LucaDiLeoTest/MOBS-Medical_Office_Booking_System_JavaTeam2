@@ -29,13 +29,26 @@ public class BookingController {
         return ResponseEntity.ok().body(bookingService.getBookingById(id));
     }
 
-    /**
-     * This endpoint return a list of all the confirmed bookings
-     * @return
-     */
-    @GetMapping("/all")
-    public List<BookingResponseDTO> getAllBooking(){
-        return bookingService.getAllBookings();}
+    @GetMapping("/all_confirmed_bookings")
+    public ResponseEntity<List<BookingResponseDTO>> getAllBooking(){
+        return ResponseEntity.status(HttpStatus.OK).body(bookingService.getAllBookings());
+    }
+
+    @GetMapping("/all_pending_bookings")
+    public ResponseEntity<List<BookingResponseDTO>> getAllPendingBookings(){
+     return ResponseEntity.status(HttpStatus.OK).body(bookingService.getAllPendingBookings());
+    }
+
+    @GetMapping("/all_deleted_bookings")
+    public ResponseEntity<List<BookingResponseDTO>> getAllDeletedOrExpiredBookings(){
+        return ResponseEntity.status(HttpStatus.OK).body(bookingService.getAllDeletedOrExpiredBookings());
+    }
+
+    @GetMapping("/all_daily_bookings")
+    public ResponseEntity<List<BookingResponseDTO>> getAllDailyBookings(){
+        return ResponseEntity.status(HttpStatus.OK).body(bookingService.getAllDailyBooking());
+    }
+
 
     @PostMapping("/")
     public ResponseEntity<BookingResponseDTO> createBooking(@RequestBody CreationBookingDTO creationBookingDTO){
