@@ -1,5 +1,7 @@
 package co.gruppo2.mobs.DTO;
 
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
+
 public class DoctorDTO {
 
     private Long id;
@@ -12,14 +14,18 @@ public class DoctorDTO {
 
     private String email;
 
+    private PersonStatusEnum personStatusEnum;
 
 
-    public DoctorDTO(Long id, String name, String surname, String fiscalCode, String email) {
+
+    public DoctorDTO(){};
+    public DoctorDTO(Long id, String name, String surname, String fiscalCode, String email, PersonStatusEnum personStatusEnum) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.fiscalCode=fiscalCode;
         this.email = email;
+        this.personStatusEnum = personStatusEnum;
 
     }
 
@@ -63,5 +69,11 @@ public class DoctorDTO {
         this.email = email;
     }
 
+    public PersonStatusEnum getPersonStatusEnum() {
+        return personStatusEnum;
+    }
 
+    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum) {
+        this.personStatusEnum = personStatusEnum;
+    }
 }

@@ -19,8 +19,7 @@ public class ReceptionistService{
     @Autowired
     IReceptionistRepository receptionistRepository;
 
-    @Autowired
-    IBookingRepository bookingRepository;
+
 
 
 //------------------------------------------Receptionist Logic-------------------------------------------//

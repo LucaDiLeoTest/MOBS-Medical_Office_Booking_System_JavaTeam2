@@ -6,6 +6,7 @@ import co.gruppo2.mobs.entities.Doctor;
 import co.gruppo2.mobs.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,13 +25,14 @@ public class DoctorController {
     }
 
     @GetMapping("/all")
-    public List<Doctor> getAllDoctors(){
+    public List<DoctorDTO> getAllDoctors(){
         return doctorService.getAllDoctors();
     }
 
     @GetMapping("/{id}")
-    public Doctor getDoctorById(@PathVariable Long id){
-        return doctorService.getDoctorById(id);
+    public ResponseEntity<DoctorDTO> getDoctorById(@PathVariable Long id){
+        DoctorDTO doctor = doctorService.getDoctorById(id);
+        return ResponseEntity.ok(doctor);
     }
 
     @PostMapping("/")
@@ -40,13 +42,15 @@ public class DoctorController {
     }
 
     @PutMapping("/{id}")
-    public void updateDoctor(@PathVariable Long id, @RequestBody DoctorDTO doctorDTO){
-        doctorService.updateDoctor(id, doctorDTO);
+    public ResponseEntity<DoctorDTO> updateDoctor(@PathVariable Long id, @RequestBody DoctorDTO doctorDTO){
+        DoctorDTO doctorDTOs = doctorService.updateDoctor(id, doctorDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(doctorDTOs);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteDoctorById(@PathVariable Long id){
-        doctorService.deleteDoctorById(id);
-    }
+   @DeleteMapping("/{id}")
+    public ResponseEntity<DoctorDTO> logicalDelete(@PathVariable Long id){
+       DoctorDTO doctorDTO = doctorService.logicalDelete(id);
+       return ResponseEntity.ok(doctorDTO);
+   }
 
 }
