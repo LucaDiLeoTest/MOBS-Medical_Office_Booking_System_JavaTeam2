@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Fix Bug (Doctor)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/DTO/DoctorDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/DTO/DoctorDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/DTO/PatientDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/DTO/PatientDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/BookingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/DoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/DoctorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/repositories/IBookingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/repositories/IBookingRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/repositories/IDoctorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/repositories/IDoctorRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/DoctorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/PatientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/PatientService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/ReceptionistService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/services/ReceptionistService.class" afterDir="false" />
-    </list>
+    <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Working to release 0.0.1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680111698226</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Working to release 0.0.1">
+      <created>1680187591779</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680187591779</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -251,6 +245,7 @@
     <MESSAGE value="Fix Bug e the patient service" />
     <MESSAGE value="Fix Bug" />
     <MESSAGE value="Fix Bug (Doctor)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Bug (Doctor)" />
+    <MESSAGE value="Working to release 0.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working to release 0.0.1" />
   </component>
 </project>
