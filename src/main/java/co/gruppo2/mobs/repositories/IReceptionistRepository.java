@@ -10,4 +10,5 @@ import java.util.List;
 @RepositoryRestResource
 public interface IReceptionistRepository extends JpaRepository<Receptionist, Long> {
 
+    List<Receptionist>findByPersonStatusEnum(PersonStatusEnum personStatusEnum);
 }

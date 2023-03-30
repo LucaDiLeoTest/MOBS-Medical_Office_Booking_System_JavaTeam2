@@ -1,7 +1,7 @@
 package co.gruppo2.mobs.DTO;
 
 
-
+import co.gruppo2.mobs.enumerations.PersonStatusEnum;
 
 public class PatientDTO{
     private Long id;
@@ -15,16 +15,18 @@ public class PatientDTO{
     private String fiscalCode;
 
     private String telephoneNumber;
+    private PersonStatusEnum personStatusEnum;
 
 
 
-    public PatientDTO(Long id,String name,String surname, String fiscalCode, String email,String telephoneNumber){
+    public PatientDTO(Long id,String name,String surname, String fiscalCode, String email,String telephoneNumber, PersonStatusEnum personStatusEnum){
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.fiscalCode=fiscalCode;
         this.telephoneNumber = telephoneNumber;
+        this.personStatusEnum = personStatusEnum;
     }
 
     public Long getId(){
@@ -74,5 +76,13 @@ public class PatientDTO{
 
     public void setTelephoneNumber(String telephoneNumber){
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public PersonStatusEnum getPersonStatusEnum() {
+        return personStatusEnum;
+    }
+
+    public void setPersonStatusEnum(PersonStatusEnum personStatusEnum) {
+        this.personStatusEnum = personStatusEnum;
     }
 }

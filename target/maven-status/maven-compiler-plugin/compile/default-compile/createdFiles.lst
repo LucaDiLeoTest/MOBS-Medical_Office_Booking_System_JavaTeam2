@@ -4,8 +4,6 @@ co\gruppo2\mobs\repositories\IReceptionistRepository.class
 co\gruppo2\mobs\repositories\IBookingRepository.class
 co\gruppo2\mobs\services\ReceptionistService.class
 co\gruppo2\mobs\entities\Person.class
-co\gruppo2\mobs\DTO\BookingDTO.class
-co\gruppo2\mobs\enumerations\DoctorSpecialization.class
 co\gruppo2\mobs\controllers\DefaultController.class
 co\gruppo2\mobs\services\BookingService.class
 co\gruppo2\mobs\services\PatientService.class

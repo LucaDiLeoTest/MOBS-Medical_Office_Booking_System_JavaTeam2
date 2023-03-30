@@ -92,4 +92,3 @@ public abstract class Person {
         this.personStatusEnum = personStatusEnum;
     }
 }
-

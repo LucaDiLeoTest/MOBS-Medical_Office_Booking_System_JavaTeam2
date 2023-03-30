@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>co.gruppo2</groupId>
 	<artifactId>MOBS</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>MOBS</name>
-	<description>Demo project for Spring Boot</description>
+	<description>MOBS APPLICATION</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
