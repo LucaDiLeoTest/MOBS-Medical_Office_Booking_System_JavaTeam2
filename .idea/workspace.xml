@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Working to release 0.0.1">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2023_20_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2023_20_50__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6ea4341f44156675685ae27cc9a7a1a0497716bf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/e/6ea4341f44156675685ae27cc9a7a1a0497716bf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/DTO/PatientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/DTO/PatientDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/repositories/IPatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/repositories/IPatientRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/services/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/services/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/co/gruppo2/mobs/controllers/PatientController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +237,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="develop" />
+                        <option value="origin/develop" />
                       </list>
                     </value>
                   </entry>

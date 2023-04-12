@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/api/patient")
 public class PatientController{
@@ -15,7 +17,7 @@ public class PatientController{
     private PatientService patientService;
 
 
-    @PostMapping("/add")
+    @PostMapping("/add")//TODO fare in modo che l' utente non veda l'enum Active/Inactive
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<PatientDTO> createPatientDTO(@RequestBody PatientDTO patientDTO)
             throws JsonProcessingException{
@@ -24,31 +26,39 @@ public class PatientController{
     }
 
 
-
-    @GetMapping("/email/{email}")
+    @GetMapping("/email/{email}")//TODO nel caso di null da un 500 e non viene gestito l' errore
     public ResponseEntity<PatientDTO> findPatientByEmail(@PathVariable String email) throws Exception{
         PatientDTO patientDTO = patientService.findPatientByEmail(email);
-        return ResponseEntity.ok(patientDTO);
+        if(patientDTO.getEmail().equals(email)){
+            return ResponseEntity.ok(patientDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(patientDTO);
+        }
     }
 
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/id/{id}")//TODO nel caso di null da un 500 e non viene gestito l' errore
     public ResponseEntity<PatientDTO> findPatientById(@PathVariable Long id){
         PatientDTO patientDTO = patientService.findPatientById(id);
-        return ResponseEntity.ok(patientDTO);
+        if(!Objects.equals(patientDTO.getId(),id)){
+            return ResponseEntity.ok(patientDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(patientDTO);
+        }
     }
 
     @GetMapping("/name-surname")
-    public ResponseEntity<PatientDTO> findPatientsByNameSurname(
-            @RequestParam String name,@RequestParam String surname){
+    public ResponseEntity<PatientDTO> findPatientsByNameSurname(@RequestParam String name,@RequestParam String surname){
         PatientDTO patientsDTO = patientService.findPatientsByNameSurname(name,surname);
-        if(patientsDTO.getId() !=null){
-        return ResponseEntity.ok(patientsDTO);}else{
+        if(patientsDTO.getId() != null){
+            return ResponseEntity.ok(patientsDTO);
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(patientsDTO);
         }
     }
-    @DeleteMapping("/id/{id}")
-    public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
+
+    @DeleteMapping("/id/{id}")//TODO fare in modo che l' utente non veda l'enum Active/Inactive
+    public ResponseEntity<Void> deletePatient(@PathVariable Long id){
         patientService.logicalDeletePatientById(id);
         return ResponseEntity.noContent().build();
     }
