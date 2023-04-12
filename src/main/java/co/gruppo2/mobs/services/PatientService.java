@@ -102,19 +102,19 @@ public class PatientService{
      @param surname the surname of the patient to be searched
      @return a List of PatientDTO objects representing the active patients that match the given name and surname
      */
-    public List<PatientDTO> findPatientsByNameSurname(String name,String surname){
-        List<PatientDTO> patientsDTO = new ArrayList<>();
+    public PatientDTO findPatientsByNameSurname(String name,String surname){
+        final PatientDTO[] patientsDTO = { new PatientDTO() };
         Optional<List<Patient>> patients = Optional.ofNullable(patientRepository.findByNameAndSurname(name,surname));
         patients.ifPresent(patientList -> {
             for(Patient patient : patientList){
                 if(patient.getPersonStatusEnum().equals(PersonStatusEnum.ACTIVE)){
-                    patientsDTO.add(
+                   patientsDTO[0] =
                             new PatientDTO(patient.getId(),patient.getName(),patient.getSurname(),patient.getFiscalCode(),patient.getEmail(),
-                                    patient.getTelephoneNumber(),patient.getPersonStatusEnum()));
+                                    patient.getTelephoneNumber(),patient.getPersonStatusEnum());
                 }
             }
         });
-        return patientsDTO;
+        return patientsDTO[0];
     }
 
 

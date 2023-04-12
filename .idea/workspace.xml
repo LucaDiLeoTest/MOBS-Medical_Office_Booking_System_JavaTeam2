@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Working to release 0.0.1" />
+    <list default="true" id="e9538083-f8ad-4177-b56a-1ea69cee4911" name="Changes" comment="Working to release 0.0.1">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2023_20_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_03_2023_20_50__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/DTO/PatientDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/DTO/PatientDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/controllers/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/repositories/IPatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/repositories/IPatientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/services/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/gruppo2/mobs/services/PatientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +54,7 @@
     </option>
   </component>
   <component name="ProjectId" id="2Llce2RwpSptx6Yym7jvbCeRowB" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -56,6 +67,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/nicol/OneDrive/Desktop/MOBS-Medical_Office_Booking_System_JavaTeam2&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -68,7 +80,7 @@
       <recent name="co.gruppo2.studiomedico.configuration" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MedicalOfficeBookingSystemApplication">
+  <component name="RunManager">
     <configuration name="MedicalOfficeBookingSystemApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />

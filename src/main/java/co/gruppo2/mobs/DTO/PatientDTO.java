@@ -17,9 +17,10 @@ public class PatientDTO{
     private String telephoneNumber;
     private PersonStatusEnum personStatusEnum;
 
+    public PatientDTO(){
+    }
 
-
-    public PatientDTO(Long id,String name,String surname, String fiscalCode, String email,String telephoneNumber, PersonStatusEnum personStatusEnum){
+    public PatientDTO(Long id,String name,String surname,String fiscalCode,String email,String telephoneNumber,PersonStatusEnum personStatusEnum){
         this.id = id;
         this.name = name;
         this.surname = surname;

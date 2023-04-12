@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/patient")
 public class PatientController{
@@ -41,10 +39,13 @@ public class PatientController{
     }
 
     @GetMapping("/name-surname")
-    public ResponseEntity<List<PatientDTO>> findPatientsByNameSurname(
+    public ResponseEntity<PatientDTO> findPatientsByNameSurname(
             @RequestParam String name,@RequestParam String surname){
-        List<PatientDTO> patientsDTO = patientService.findPatientsByNameSurname(name,surname);
-        return ResponseEntity.ok(patientsDTO);
+        PatientDTO patientsDTO = patientService.findPatientsByNameSurname(name,surname);
+        if(patientsDTO.getId() !=null){
+        return ResponseEntity.ok(patientsDTO);}else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(patientsDTO);
+        }
     }
     @DeleteMapping("/id/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
